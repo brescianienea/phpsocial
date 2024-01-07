@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>    
+<?php include('head.php'); ?>
 <?php include('session.php'); ?>    
     <body>
 	<?php include('navbar.php'); ?>

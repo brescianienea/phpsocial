@@ -1,3 +1,8 @@
+<?php header("Location: /home.php?section=friends");
+include('dbcon.php');
+die(); ?>
+
+<?php /*
 <?php include('index_header.php'); ?>
 			<?php include('dbcon.php'); ?>
     <body>
@@ -24,4 +29,4 @@
             </section>
         </div>
     </body>
-</html>
+</html> */ ?>

@@ -135,6 +135,8 @@ nav ul li a._selected svg {
 }
 
 .section-selection ul li a {
+  display: inline-block;
+  width: 100%;
   color: #ababab;
 }
 

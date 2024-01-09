@@ -1,8 +1,4 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
 if (!$_GET['section']) {
     header("Location: /index.php");
     exit();
@@ -11,6 +7,7 @@ if (!$_GET['section']) {
     <!DOCTYPE html>
     <html lang="en">
     <?php include('head.php'); ?>
+    <?php $_SESSION['page'] = 'feed' ?>
     <body>
     <?php include('header.php'); ?>
     </header>

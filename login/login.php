@@ -85,7 +85,7 @@
                     if (result['message'] === 'success') {
                         window.location.href = "login-page.php";
                     } else {
-                        alert('error');
+                        alert(result['message']);
                     }
 
 

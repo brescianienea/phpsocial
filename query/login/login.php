@@ -23,10 +23,10 @@ function loginUser($db, $userData)
         $query .= " WHERE username = '$username' AND password = '$password'";
         $result = $db->query($query);
         if ($result->num_rows > 0) {
-            $response['message'] = "success";
+            $response['message'] = " ";
             $response = array_merge($response, $result->fetch_array(MYSQLI_BOTH));
             $_SESSION['logged'] = 'true';
-            $_SESSION['User'] = $response['username'];
+            $_SESSION['user'] = $response['username'];
         } else {
             $response['message'] = "Wrong username and password";
 

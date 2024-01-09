@@ -9,6 +9,11 @@
             header("Location: /login-page.php?section=login");
             exit();
         } ?>
+    <?php else: ?>
+        <?php if (!$_GET['section']) {
+            header("Location: /profile-page.php?section=profile");
+            exit();
+        } ?>
     <?php endif; ?>
     <body>
     <?php include('header.php'); ?>
@@ -16,7 +21,19 @@
     <main>
         <div class="column">
             <div class="wrapper">
-
+                <section class="section-selection">
+                    <ul>
+                        <li class="<?php if ($_GET['section'] == "profile"): ?> _selected <?php endif; ?>">
+                            <a href="/profile-page.php?section=profile">Your Profile</a>
+                        </li>
+                        <li class="<?php if ($_GET['section'] == "friends"): ?> _selected <?php endif; ?>">
+                            <a href="/profile-page.php?section=friends">Your Friends</a>
+                        </li>
+                        <li class="<?php if ($_GET['section'] == "settings"): ?> _selected <?php endif; ?>">
+                            <a href="/profile-page.php?section=settings">Settings</a>
+                        </li>
+                    </ul>
+                </section>
             </div>
         </div>
         <?php include('navbar.php'); ?>

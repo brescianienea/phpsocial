@@ -24,21 +24,21 @@
                     <div class="input-container input-value">
                         <div class="date-wrapper">
                             <div class="input-container input-value">
-                                <input id="day" autocomplete="false" type="number" name="mail" placeholder="GG" min="1"
+                                <input id="day" autocomplete="false" type="number" name="day" placeholder="GG" min="1"
                                        max="31"
                                        minlength="2"
                                        required/>
                                 <label for="day">Day</label>
                             </div>
                             <div class="input-container input-value">
-                                <input id="month" autocomplete="false" type="number" name="mail" placeholder="MM"
+                                <input id="month" autocomplete="false" type="number" name="month" placeholder="MM"
                                        min="1" max="12"
                                        minlength="2"
                                        required/>
                                 <label for="month">Month</label>
                             </div>
                             <div class="input-container input-value">
-                                <input id="year" autocomplete="false" type="number" name="mail" placeholder="YYYY"
+                                <input id="year" autocomplete="false" type="number" name="year" placeholder="YYYY"
                                        min="1" max="9999"
                                        minlength="4"
                                        required/>
@@ -490,7 +490,6 @@
     });
 
     function formSubmit() {
-        console.log($('#registration_form').serialize());
         $.ajax({
 
             method: "POST",
@@ -501,6 +500,7 @@
                 let result = JSON.parse(data);
                 if (result['message'] === 'success') {
                     window.location.href = "login-page.php?section=login";
+                    alert('Registration completed. Please login.');
                 } else {
                     alert(result['message']);
                     window.location.href = "login-page.php?section=register"

@@ -20,15 +20,20 @@ function loginUser($db, $userData)
     if (!empty($username) && !empty($password)) {
 
         $query = "SELECT username, password FROM " . tableName;
-        $query .= " WHERE username = '$username' AND password = '$password'";
+        $query .= " WHERE username = '$username'";
         $result = $db->query($query);
         if ($result->num_rows > 0) {
-            $response['message'] = " ";
-            $response = array_merge($response, $result->fetch_array(MYSQLI_BOTH));
-            $_SESSION['logged'] = 'true';
-            $_SESSION['user'] = $response['username'];
+            $result = $result->fetch_array(MYSQLI_BOTH);
+            if (password_verify($password, $result['password'])) {
+                $response['message'] = "success";
+                $_SESSION['logged'] = 'true';
+                $_SESSION['user'] = $result['username'];
+            } else {
+                $response['message'] = "Wrong username or password";
+            }
+
         } else {
-            $response['message'] = "Wrong username and password";
+            $response['message'] = "Wrong username or password";
 
         }
 

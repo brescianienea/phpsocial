@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Create an Account</h1>
         <div id="form">
-            <form id="registration_form" novalidate>
+            <form id="registration_form" onsubmit="return false;" novalidate>
 
                 <div style="text-align:center;margin-top:40px;">
                     <span class="step"></span>
@@ -53,7 +53,7 @@
                 <div class="tab" id="user-tab">
                     <h2>Choose a Username</h2>
                     <div class="input-container input-value">
-                        <input type="text" name="username" required/>
+                        <input id="username" type="text" name="username" required/>
                         <label for="username">Username</label>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
 
                     <div class="input-container input-value">
                         <input id="confirm-password" type="password" name="confirm-password" required/>
-                        <label for="confirm-password">Password</label>
+                        <label for="confirm-password">Confirm Password</label>
                     </div>
 
                     <div class="password-requirements">
@@ -94,7 +94,7 @@
 
 
                 <div class="button">
-                    <button href="#" disabled id="submit" type="submit" onclick="nextPrev(1); return false;"
+                    <button href="#" disabled id="btnSubmit" type="submit" onclick="nextPrev(1); return false;"
                             class="btn"><?php include('source/icons/arrow-right-solid.svg') ?></button>
                 </div>
 
@@ -116,7 +116,7 @@
     const confirmPassword = document.getElementById("confirm-password");
     const showPassword = document.getElementById("show-password");
     const matchPassword = document.getElementById("match");
-    const submit = document.getElementById("submit");
+    const submit = document.getElementById("btnSubmit");
 
     inputs.forEach((input) => {
         input.addEventListener("blur", (event) => {
@@ -217,7 +217,7 @@
         handleFormValidation();
     });
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("btnSubmit", (event) => {
         event.preventDefault();
         const validForm = handleFormValidation();
 
@@ -253,7 +253,7 @@
         // if you have reached the end of the form... :
         if (currentTab >= x.length) {
             //...the form gets submitted:
-            document.getElementById("regForm").submit();
+            formSubmit();
             return false;
         }
         // Otherwise, display the correct tab:
@@ -448,7 +448,7 @@
             } else if (currentForm.attr('id') === 'birth-tab') {
                 doDateCheck(currentForm);
             } else if (currentForm.attr('id') === 'user-tab') {
-                doDateCheck(currentForm);
+                doCheckForm(currentForm);
             } else if (currentForm.attr('id') === 'password-tab') {
                 handleFormValidation();
             }
@@ -458,8 +458,8 @@
         $(window).keydown(function (event) {
             if (event.keyCode == 13) {
                 event.preventDefault();
-                if (!$('#submit').attr('disabled'))
-                    $('#submit').click();
+                if (!$('#btnSubmit').attr('disabled'))
+                    $('#btnSubmit').click();
                 return false;
             }
         });
@@ -488,6 +488,30 @@
         });
 
     });
+
+    function formSubmit() {
+        console.log($('#registration_form').serialize());
+        $.ajax({
+
+            method: "POST",
+            url: "/query/login/register.php",
+            data: $('#registration_form').serialize(),
+            success: function (data) {
+                console.log(data);
+                let result = JSON.parse(data);
+                if (result['message'] === 'success') {
+                    window.location.href = "login-page.php?section=login";
+                } else {
+                    alert(result['message']);
+                    window.location.href = "login-page.php?section=register"
+                }
+
+
+            }
+
+        });
+    }
+
 
 </script>
 

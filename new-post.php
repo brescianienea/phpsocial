@@ -1,39 +1,17 @@
 <?php
-if (!$_GET['section']) {
-    header("Location: /home.php?section=friends");
-    exit();
-}
 ?>
     <!DOCTYPE html>
     <html lang="en">
     <?php include('head.php'); ?>
-    <?php $_SESSION['page'] = 'feed' ?>
+    <?php $_SESSION['page'] = 'new-post' ?>
     <body>
     <?php include('header.php'); ?>
     </header>
     <main>
         <div class="column">
             <div class="wrapper">
-                <h1>Feed</h1>
-                <section class="section-selection">
-                    <ul>
-                        <li class="<?php if ($_GET['section'] == "friends"): ?> _selected <?php endif; ?>">
-                            <a href="/home.php?section=friends">Friends</a>
-                        </li>
-                        <li class="<?php if ($_GET['section'] == "discover"): ?> _selected <?php endif; ?>">
-                            <a href="/home.php?section=discover">Discover</a>
-                        </li>
-                        <li class="<?php if ($_GET['section'] == "news"): ?> _selected <?php endif; ?>">
-                            <a href="/home.php?section=news">News</a>
-                        </li>
-                    </ul>
-                </section>
-                <?php if ($_GET['section'] == "friends"): ?>
-                    <?php include('home/friends.php'); ?>
-                <?php elseif ($_GET['section'] == "discover"): ?>
-                    <?php include('home/discover.php'); ?>
-                <?php elseif ($_GET['section'] == "news"): ?>
-                    <?php include('home/news.php'); ?>
+                <?php if ($_SESSION['logged'] == 'false'): ?>
+                    <?php include('login-required.php'); ?>
                 <?php endif; ?>
             </div>
         </div>
@@ -46,10 +24,10 @@ if (!$_GET['section']) {
     </html>
 <?php /*
 <?php include('head.php'); ?>
-<?php include('session.php'); ?>    
+<?php include('session.php'); ?>
     <body>
 	<?php include('navbar.php'); ?>
-			<div id="masthead">  
+			<div id="masthead">
 				<div class="container">
 					<?php include('heading.php'); ?>
 				</div><!-- /cont -->
@@ -58,16 +36,16 @@ if (!$_GET['section']) {
 					<div class="col-md-12">
 						<div class="top-spacer"> </div>
 					</div>
-					</div> 
+					</div>
 				</div><!-- /cont -->
 			</div>
 <div class="container">
   <div class="row">
-    <div class="col-md-12"> 
+    <div class="col-md-12">
       <div class="panel">
         <div class="panel-body">
           <!--/stories-->
-          <div class="row">    
+          <div class="row">
             <br>
 				<?php
 	$query = $conn->query("select * from post LEFT JOIN members on members.member_id = post.member_id order by post_id DESC");
@@ -90,20 +68,20 @@ if (!$_GET['section']) {
               </div>
               <br><br>
             </div>
-	<?php } ?>		
+	<?php } ?>
           </div>
           <hr>
         </div>
       </div>
-                                                                                       
-	                                                
-                                                      
+
+
+
    	</div><!--/col-12-->
   </div>
 </div>
-                                                
-                                                                                
+
+
 <?php include('footer.php'); ?>
-        
+
     </body>
 </html> */ ?>

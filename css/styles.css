@@ -25,13 +25,19 @@ body {
   height: 100%;
 }
 
+body main {
+  flex: 1;
+}
+
 body main .column {
   max-width: 1328px;
   margin: 0 auto;
+  height: 100%;
 }
 
 body main .column .wrapper {
   margin: 0 5px;
+  height: 100%;
 }
 
 body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -44,6 +50,17 @@ body h1 {
 
 body a {
   text-decoration: none;
+  color: #fff;
+}
+
+body input:-webkit-autofill,
+body input:-webkit-autofill:hover,
+body input:-webkit-autofill:focus,
+body input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232329;
 }
 
 .desktop-only {
@@ -109,11 +126,19 @@ nav ul li a svg {
   fill: #ababab;
 }
 
+nav ul li a svg path {
+  fill: #ababab;
+}
+
 nav ul li a._selected {
   color: #fff;
 }
 
 nav ul li a._selected svg {
+  fill: #fff;
+}
+
+nav ul li a._selected svg path {
   fill: #fff;
 }
 
@@ -169,4 +194,380 @@ footer .row p {
   font-size: 0.8rem;
   text-align: center;
   width: 100%;
+}
+
+.login-needed {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.login-needed article {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+
+.login-needed article svg {
+  height: 4rem;
+  width: 4rem;
+}
+
+.login-needed article svg path {
+  fill: #fff;
+}
+
+.login-needed article a {
+  display: block;
+  background-color: #2d2d2d;
+  width: 150px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #1f1f1f;
+  outline: 2px solid transparent;
+}
+
+.login-needed article a:hover, .login-needed article a:focus {
+  outline: 2px solid #fff;
+}
+
+.login {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.login .container {
+  width: 80%;
+  background-color: #181a1b;
+  padding: 32px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.login .container form {
+  padding-top: 1rem;
+  margin: auto;
+  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.175s 1 normal forwards;
+}
+
+.login .container form .input-container {
+  position: relative;
+  height: 4em;
+  margin-bottom: 16px;
+  border-bottom-width: 1px;
+}
+
+.login .container form .input-container button {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  z-index: 999;
+  background-color: transparent;
+  border: none;
+  padding: 0 10px;
+}
+
+.login .container form .input-container button svg path {
+  fill: #ababab;
+}
+
+.login .container form .input-container button .toggled {
+  display: none;
+}
+
+.login .container form .input-container button.toggled .toggled {
+  display: block;
+}
+
+.login .container form .input-container button.toggled .not-toggled {
+  display: none;
+}
+
+.login .container form .input-value {
+  float: right;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+}
+
+.login .container form .input-value + * {
+  clear: both;
+}
+
+.login .container form input {
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  position: absolute;
+  border: 0;
+  background: #1f1f1f;
+  z-index: 1;
+  font-size: 1.6em;
+  font-weight: bold;
+  letter-spacing: 0.012em;
+  color: #fff;
+  padding-left: 10px;
+  padding-top: 15px;
+  border-radius: 3px;
+}
+
+.login .container form input:focus-visible {
+  outline: #ababab solid 2px;
+}
+
+.login .container form input:hover {
+  background-color: #1e2122;
+}
+
+.login .container form input:focus {
+  background-color: #1f1f1f;
+}
+
+.login .container form label {
+  z-index: 9999;
+  font-weight: bold;
+  display: block;
+  position: absolute;
+  margin-top: 5px;
+  padding-left: 10px;
+  color: #ababab;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  animation-name: labelIn;
+  animation-duration: 0.2s;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  pointer-events: none;
+}
+
+.login .container form input:focus + label, .login .container form input:valid + label {
+  font-weight: bold;
+  animation-name: labelOut;
+  animation-duration: 0.2s;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.login .container form .button {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.login .container form .button .btn {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 30%;
+  background: #d53235;
+  border: 0;
+  font-size: 3rem;
+}
+
+.login .container form .button .btn svg {
+  height: 2rem;
+  width: 2rem;
+}
+
+.login .container form .button .btn svg path {
+  fill: #fff;
+}
+
+.login .container form .button .btn:hover {
+  background: #bf2224;
+  cursor: pointer;
+}
+
+.login .container form .button .btn:disabled {
+  background-color: transparent;
+  border: 1px solid #ababab;
+  color: #ababab;
+}
+
+.login .container form .button .btn:disabled svg path {
+  fill: #ababab;
+}
+
+.login .container form .bottom-links {
+  position: relative;
+  margin-top: 3em;
+  text-transform: uppercase;
+}
+
+.login .container form .bottom-links > p {
+  padding: 2px;
+}
+
+.login .container form#registration_form {
+  /* Mark the active step: */
+  /* Mark the steps that are finished and valid: */
+}
+
+.login .container form#registration_form .tab {
+  display: none;
+}
+
+.login .container form#registration_form .tab input[type=date]::-webkit-inner-spin-button, .login .container form#registration_form .tab input[type=date]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.login .container form#registration_form .tab .date-wrapper {
+  display: flex;
+  border-radius: 3px;
+  background-color: #1f1f1f;
+}
+
+.login .container form#registration_form .tab .date-wrapper .input-container {
+  margin-bottom: 0;
+}
+
+.login .container form#registration_form .tab .date-wrapper:has(.input-container):has(input):has(:focus) {
+  outline: #ababab solid 2px;
+}
+
+.login .container form#registration_form .tab .date-wrapper input:focus-visible {
+  outline: none;
+}
+
+.login .container form#registration_form .tab .date-wrapper input::placeholder {
+  color: transparent;
+}
+
+.login .container form#registration_form .tab .date-wrapper input:focus::placeholder {
+  color: #6a696a;
+}
+
+.login .container form#registration_form .step {
+  height: 3px;
+  width: 24px;
+  margin: 0 2px;
+  background-color: #ababab;
+  border: none;
+  display: inline-block;
+  opacity: 1;
+}
+
+.login .container form#registration_form .step.active {
+  background-color: #fff;
+}
+
+.login .container form#registration_form .step.finish {
+  background-color: #d53235;
+}
+
+.login .container form#registration_form .password-requirements {
+  text-align: left;
+}
+
+.login .container form#registration_form .password-requirements .requirement {
+  font-size: 14px;
+  flex: 1 0 50%;
+  min-width: max-content;
+  margin: 2px 0;
+  color: #ababab;
+}
+
+.login .container form#registration_form .password-requirements .requirement:before {
+  content: '';
+  margin-right: 10px;
+  font-size: 1.6em;
+  display: inline-block;
+  position: relative;
+  height: 16px;
+  width: 16px;
+  top: .15em;
+  background-color: #ababab;
+  -webkit-mask: url(/source/icons/square-xmark-solid.svg) no-repeat 50% 50%;
+  mask: url(/source/icons/square-xmark-solid.svg) no-repeat 50% 50%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+.login .container form#registration_form .password-requirements .requirement.valid:before {
+  content: '';
+  -webkit-mask: url(/source/icons/circle-check-solid.svg) no-repeat 50% 50%;
+  mask: url(/source/icons/circle-check-solid.svg) no-repeat 50% 50%;
+  background-color: #39ccb1;
+}
+
+.login .container form#registration_form .password-requirements .requirement.error {
+  color: red;
+}
+
+@keyframes labelIn {
+  0% {
+    left: 1px;
+    opacity: 1;
+    top: 1.2em;
+    font-size: 1em;
+    padding-left: 1em;
+  }
+  50% {
+    font-size: 1em;
+    left: 1em;
+    opacity: 0;
+    top: 1.2em;
+    padding-left: 1em;
+  }
+  50.01% {
+    font-size: 0.85em;
+    left: 1em;
+    opacity: 0;
+    top: 0.2em;
+  }
+  100% {
+    font-size: 0.85em;
+    opacity: 1;
+    left: 1px;
+    top: 0.2em;
+  }
+}
+
+@keyframes labelOut {
+  0% {
+    left: 1px;
+    opacity: 1;
+    top: 1.2em;
+    font-size: 1em;
+    padding-left: 1em;
+  }
+  50% {
+    font-size: 1em;
+    left: 1em;
+    opacity: 0;
+    top: 1.2em;
+    padding-left: 1em;
+  }
+  50.01% {
+    font-size: 0.85em;
+    left: 1em;
+    opacity: 0;
+    top: 0.2em;
+  }
+  100% {
+    font-size: 0.85em;
+    opacity: 1;
+    left: 1px;
+    top: 0.2em;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

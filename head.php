@@ -7,3 +7,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <?php include('dbcon.php'); ?>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['logged'])) {
+    $_SESSION['logged'] = 'false';
+}
+
+?>
+

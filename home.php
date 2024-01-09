@@ -1,13 +1,16 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 if (!$_GET['section']) {
-    header("Location: /home.php?section=friends");
+    header("Location: /index.php");
     exit();
 }
 ?>
     <!DOCTYPE html>
     <html lang="en">
     <?php include('head.php'); ?>
-    <?php $_SESSION['page'] = 'feed' ?>
     <body>
     <?php include('header.php'); ?>
     </header>
@@ -17,7 +20,8 @@ if (!$_GET['section']) {
                 <h1>Feed</h1>
                 <section class="section-selection">
                     <ul>
-                        <li class="<?php if ($_GET['section'] == "friends"): ?> _selected <?php endif; ?>">
+                        <li <?php if ($_SESSION['logged'] == "false"): ?> hidden="hidden" <?php endif; ?>
+                                class="<?php if ($_GET['section'] == "friends"): ?> _selected <?php endif; ?>">
                             <a href="/home.php?section=friends">Friends</a>
                         </li>
                         <li class="<?php if ($_GET['section'] == "discover"): ?> _selected <?php endif; ?>">

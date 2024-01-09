@@ -150,6 +150,7 @@ nav ul li a._selected svg path {
   padding: 0;
   display: flex;
   justify-content: space-between;
+  column-gap: 10px;
 }
 
 .section-selection ul li {
@@ -160,6 +161,7 @@ nav ul li a._selected svg path {
   padding: 10px;
   text-align: center;
   border-radius: 10px;
+  flex: 1;
 }
 
 .section-selection ul li a {

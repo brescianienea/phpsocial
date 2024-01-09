@@ -73,9 +73,26 @@
 
         //option A
         $("form").submit(function (e) {
-            alert('submit intercepted');
             e.preventDefault(e);
-            
+            $.ajax({
+
+                method: "POST",
+                url: "/query/login/login.php",
+                data: $(this).serialize(),
+                success: function (data) {
+                    console.log(data);
+                    let result = JSON.parse(data);
+                    if (result['message'] === 'success') {
+                        window.location.href = "login-page.php";
+                    } else {
+                        alert('error');
+                    }
+
+
+                }
+
+            });
+
         });
 
         document.getElementById('show-password').addEventListener('click', event => {

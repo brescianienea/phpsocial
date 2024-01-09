@@ -422,9 +422,12 @@ footer section .row p {
   display: none;
 }
 
-.login .container form#registration_form .tab input[type=date]::-webkit-inner-spin-button, .login .container form#registration_form .tab input[type=date]::-webkit-calendar-picker-indicator {
-  display: none;
+.login .container form#registration_form .tab input[type=number]::-webkit-inner-spin-button,
+.login .container form#registration_form .tab input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 .login .container form#registration_form .tab .date-wrapper {

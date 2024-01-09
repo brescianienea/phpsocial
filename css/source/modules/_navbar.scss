@@ -1,30 +1,43 @@
-nav{
+nav {
   background-color: $background-color__dark;
   width: 100%;
   position: fixed;
   bottom: 0;
   border-top: 2px solid $border-color__dark;
-  ul{
+
+  ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: space-around;
-    li{
-      a{
+
+    li {
+      a {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 5px;
         color: $icon-color;
-        svg{
+
+        svg {
           height: 1.5rem;
           width: 1.5rem;
           fill: $icon-color;
+
+          path {
+            fill: $icon-color;
+          }
         }
-        &._selected{
+
+        &._selected {
           color: $icon-color__selected;
-          svg{
+
+          svg {
             fill: $icon-color__selected;
+
+            path {
+              fill: $icon-color__selected;
+            }
           }
         }
       }

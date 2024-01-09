@@ -1,9 +1,9 @@
-html{
+html {
   font-size: 16px;
   height: 100%;
 }
 
-body{
+body {
   background-color: $background-color;
   color: $font-color;
   font-family: $font-family__normal;
@@ -12,39 +12,55 @@ body{
   flex-direction: column;
   height: 100%;
 
-  main{
-    .column{
+  main {
+    flex: 1;
+
+    .column {
       max-width: 1328px;
       margin: 0 auto;
-      .wrapper{
+      height: 100%;
+
+      .wrapper {
         margin: 0 5px;
+        height: 100%;
       }
     }
   }
 
-  h1,h2,h3,h4,h5,h6{
+  h1, h2, h3, h4, h5, h6 {
     font-family: $font-family__heading;
   }
 
-  h1{
+  h1 {
     margin-top: 15px;
   }
 
-  a{
+  a {
     text-decoration: none;
+    color: $font-color;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
   }
 }
 
-.desktop-only{
+.desktop-only {
   display: none;
 }
 
 @media screen and (min-width: $screen-m) {
-  .desktop-only{
+  .desktop-only {
     display: initial;
   }
 
-  .mobile-only{
+  .mobile-only {
     display: none;
   }
 }

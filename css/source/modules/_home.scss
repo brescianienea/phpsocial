@@ -1,10 +1,12 @@
-.section-selection{
-  ul{
+.section-selection {
+  ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: space-between;
-    li{
+    column-gap: 10px;
+
+    li {
       width: 25%;
       background-color: $background-color__light;
       border: 2px solid $background-color;
@@ -12,17 +14,20 @@
       padding: 10px;
       text-align: center;
       border-radius: 10px;
-      a{
+      flex: 1;
+
+      a {
         display: inline-block;
         width: 100%;
         color: $icon-color;
 
       }
-      &._selected{
+
+      &._selected {
 
         outline: 2px solid $icon-color__selected;
 
-        a{
+        a {
           color: $icon-color__selected;
         }
       }

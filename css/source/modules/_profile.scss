@@ -1,0 +1,23 @@
+.setting-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+
+    border-bottom: 2px solid $background-color__light;
+
+
+    a {
+      padding: 20px;
+      display: flex;
+      column-gap: 10px;
+
+      svg {
+        path {
+          fill: $primary_color;
+        }
+      }
+    }
+  }
+
+}

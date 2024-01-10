@@ -34,6 +34,13 @@
                         </li>
                     </ul>
                 </section>
+                <?php if ($_GET['section'] == "profile"): ?>
+                    <?php include('profile/profile.php'); ?>
+                <?php elseif ($_GET['section'] == "friends"): ?>
+                    <?php include('profile/friends.php'); ?>
+                <?php elseif ($_GET['section'] == "settings"): ?>
+                    <?php include('profile/setting.php'); ?>
+                <?php endif; ?>
             </div>
         </div>
         <?php include('navbar.php'); ?>

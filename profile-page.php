@@ -35,9 +35,7 @@
                     </ul>
                 </section>
                 <?php if ($_GET['section'] == "profile"): ?>
-                    <?php include('profile/profile.php'); 
-                    include('query/getters/getters.php');
-                    echo(json_encode(InfoGetter::getUserInfoByID(11)));?>
+                    <?php include('profile/profile.php'); ?>
                 <?php elseif ($_GET['section'] == "friends"): ?>
                     <?php include('profile/friends.php'); ?>
                 <?php elseif ($_GET['section'] == "settings"): ?>

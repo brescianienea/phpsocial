@@ -17,8 +17,7 @@ if (!$_GET['section']) {
                 <h1>Feed</h1>
                 <section class="section-selection">
                     <ul>
-                        <li <?php if ($_SESSION['logged'] == "false"): ?> hidden="hidden" <?php endif; ?>
-                                class="<?php if ($_GET['section'] == "friends"): ?> _selected <?php endif; ?>">
+                        <li class="<?php if ($_SESSION['logged'] == "false"): ?> hidden <?php endif; ?>    <?php if ($_GET['section'] == "friends"): ?> _selected <?php endif; ?>">
                             <a href="/home.php?section=friends">Friends</a>
                         </li>
                         <li class="<?php if ($_GET['section'] == "discover"): ?> _selected <?php endif; ?>">

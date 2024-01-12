@@ -12,11 +12,27 @@
             <div class="wrapper">
                 <?php if ($_SESSION['logged'] == 'false'): ?>
                     <?php include('login-required.php'); ?>
+                <?php else: ?>
+                    <h1>New Post</h1>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title"/>
+                    <label for="suneditor">Content</label>
+                    <textarea id="suneditor"></textarea>
                 <?php endif; ?>
             </div>
+            <script>
+                const editor = SUNEDITOR.create((document.getElementById('suneditor') || 'suneditor'), {});
+            </script>
+
         </div>
         <?php include('navbar.php'); ?>
     </main>
+    <style>
+        .sun-editor {
+            filter: invert(1);
+            width: auto !important;
+        }
+    </style>
     </body>
     <?php include('footer.php'); ?>
 

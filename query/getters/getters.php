@@ -1,5 +1,7 @@
 <?php
-class InfoGetter {
+
+class InfoGetter
+{
     static function getUserInfoByID($userData)
     {
         try {
@@ -17,13 +19,13 @@ class InfoGetter {
                 $query .= " WHERE member_id = " . $userID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_array(MYSQLI_BOTH);
+                    $result = $result->fetch_assoc();
                     return $result;
                 } else {
                     echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty userID");
                 return null;
@@ -50,13 +52,13 @@ class InfoGetter {
                 $query .= " WHERE user_id = " . $userID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_array(MYSQLI_BOTH);
+                    $result = $result->fetch_assoc();
                     return $result;
                 } else {
                     echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty userID");
                 return null;
@@ -89,7 +91,7 @@ class InfoGetter {
                     echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty userID");
                 return null;
@@ -116,13 +118,13 @@ class InfoGetter {
                 $query .= " WHERE ign = " . $ign;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_array(MYSQLI_BOTH);
+                    $result = $result->fetch_assoc(MYSQLI_ASSOC);
                     return $result;
                 } else {
                     echo("Wrong IGN");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty IGN");
                 return null;
@@ -155,7 +157,7 @@ class InfoGetter {
                     echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty userID");
                 return null;
@@ -188,7 +190,7 @@ class InfoGetter {
                     echo("Wrong username");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty username");
                 return null;
@@ -221,7 +223,7 @@ class InfoGetter {
                     echo("Wrong email");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty email");
                 return null;
@@ -244,23 +246,23 @@ class InfoGetter {
             $userID = $userData;
             $response = [];
             if (!empty($userID)) {
-                $query = "SELECT post_id, content, datetime_posted FROM posts";
-                $query .= " WHERE user_id = " . $userID;
+                $query = "SELECT post_id, content, datetime_posted FROM post";
+                $query .= " WHERE member_id = " . $userID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
                     $result = $result->fetch_array(MYSQLI_BOTH);
                     return $result;
                 } else {
-                    echo("Wrong userID");
+                    //echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
-                echo("Empty userID");
+                //echo("Empty userID");
                 return null;
             }
         } catch (Exception $e) {
-            echo 'Caught exception: ', $e->getMessage(), "\n";
+            //echo 'Caught exception: ', $e->getMessage(), "\n";
         }
     }
 
@@ -287,7 +289,7 @@ class InfoGetter {
                     echo("Wrong postID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty postID");
                 return null;
@@ -322,7 +324,7 @@ class InfoGetter {
                     echo("Wrong ID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty ID");
                 return null;
@@ -355,7 +357,7 @@ class InfoGetter {
                     echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty userID");
                 return null;
@@ -388,7 +390,7 @@ class InfoGetter {
                     echo("Wrong commentID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty commentID");
                 return null;
@@ -421,7 +423,7 @@ class InfoGetter {
                     echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty userID");
                 return null;
@@ -454,7 +456,7 @@ class InfoGetter {
                     echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty userID");
                 return null;
@@ -487,7 +489,7 @@ class InfoGetter {
                     echo("Wrong postID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty postID");
                 return null;
@@ -522,7 +524,7 @@ class InfoGetter {
                     echo("Wrong ID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty ID");
                 return null;
@@ -555,7 +557,7 @@ class InfoGetter {
                     echo("Wrong senderID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty senderID");
                 return null;
@@ -588,7 +590,7 @@ class InfoGetter {
                     echo("Wrong receiverID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty receiverID");
                 return null;
@@ -621,7 +623,7 @@ class InfoGetter {
                     echo("Wrong postID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty postID");
                 return null;
@@ -654,7 +656,7 @@ class InfoGetter {
                     echo("Wrong userID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty userID");
                 return null;
@@ -687,7 +689,7 @@ class InfoGetter {
                     echo("Wrong commentID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty commentID");
                 return null;
@@ -720,7 +722,7 @@ class InfoGetter {
                     echo("Wrong receiverID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty receiverID");
                 return null;
@@ -753,7 +755,7 @@ class InfoGetter {
                     echo("Wrong senderID");
                     return null;
                 }
-    
+
             } else {
                 echo("Empty senderID");
                 return null;

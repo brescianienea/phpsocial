@@ -41,6 +41,8 @@ body main .column {
 body main .column .wrapper {
   margin: 0 5px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -64,6 +66,238 @@ body input:-webkit-autofill:active {
   -webkit-text-fill-color: #ffffff;
   transition: background-color 5000s ease-in-out 0s;
   box-shadow: inset 0 0 20px 20px #23232329;
+}
+
+.popup {
+  color: black;
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  background: #fffefe;
+  padding: 25px;
+  border-radius: 15px;
+  top: 10%;
+  max-width: 380px;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%) scale(1.2);
+  transition: top 0s 0.2s ease-in-out, opacity 0.2s 0s ease-in-out, transform 0.2s 0s ease-in-out;
+}
+
+.popup.show {
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+  transition: top 0s 0s ease-in-out, opacity 0.2s 0s ease-in-out, transform 0.2s 0s ease-in-out;
+}
+
+.popup :is(.heading, .icons, .field) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popup .heading {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ebedf9;
+}
+
+.popup .heading span {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.popup .heading span .close, .popup .heading span .icons a {
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.popup .heading .close {
+  background: #f3f3f3;
+  height: 34px;
+  width: 34px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.popup .heading .close svg {
+  padding: 5px;
+  height: 24px;
+  width: 24px;
+}
+
+.popup .heading .close svg path {
+  fill: #878787;
+}
+
+.popup .heading .close:hover {
+  background: #ebedf9;
+}
+
+.popup .content {
+  margin: 20px 0;
+}
+
+.popup .content p {
+  font-size: 16px;
+}
+
+.popup .content .icons {
+  margin: 15px 0 20px 0;
+  list-style: none;
+  padding: 0;
+}
+
+.popup .content .icons li {
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 50%;
+}
+
+.popup .content .icons li a {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.popup .content .icons li svg {
+  transition: transform 0.3s ease-in-out;
+  height: 24px;
+  width: 24px;
+}
+
+.popup .content .icons li:nth-child(1) {
+  border-color: #b7d4fb;
+}
+
+.popup .content .icons li:nth-child(1) svg path {
+  fill: #1877F2;
+}
+
+.popup .content .icons li:nth-child(1):hover {
+  background: #1877F2;
+}
+
+.popup .content .icons li:nth-child(2) {
+  border-color: #898989;
+}
+
+.popup .content .icons li:nth-child(2) svg path {
+  fill: #000;
+}
+
+.popup .content .icons li:nth-child(2):hover {
+  background: #000;
+}
+
+.popup .content .icons li:nth-child(3) {
+  border-color: #f5bccf;
+}
+
+.popup .content .icons li:nth-child(3) svg path {
+  fill: #e1306c;
+}
+
+.popup .content .icons li:nth-child(3):hover {
+  background: #e1306c;
+}
+
+.popup .content .icons li:nth-child(4) {
+  border-color: #bef4d2;
+}
+
+.popup .content .icons li:nth-child(4) svg path {
+  fill: #25D366;
+}
+
+.popup .content .icons li:nth-child(4):hover {
+  background: #25D366;
+}
+
+.popup .content .icons li:nth-child(5) {
+  border-color: #b3e6ff;
+}
+
+.popup .content .icons li:nth-child(5) svg path {
+  fill: #0088cc;
+}
+
+.popup .content .icons li:nth-child(5):hover {
+  background: #0088cc;
+}
+
+.popup .content .icons li:hover {
+  background-color: transparent;
+}
+
+.popup .content .icons li:hover svg {
+  transform: scale(1.2);
+}
+
+.popup .content .icons li:hover svg path {
+  fill: #fff;
+}
+
+.popup .content .field {
+  margin: 12px 0 -5px 0;
+  height: 45px;
+  border-radius: 4px;
+  padding: 0 0 0 5px;
+  border: 1px solid #757171;
+}
+
+.popup .content .field svg {
+  width: 50px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.popup .content .field input {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #757171;
+  border-right: 0;
+  border-left: 0;
+  outline: none;
+  font-size: 15px;
+}
+
+.popup .content .field button {
+  height: 100%;
+  background-color: #d53235;
+  padding: 5px 18px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+}
+
+.popup .content .field button:hover {
+  background: #bf2224;
+}
+
+.popup .content .field.active {
+  border-color: #7d2ae8;
+}
+
+.popup .content .field.active svg {
+  color: #7d2ae8;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .desktop-only {
@@ -162,6 +396,9 @@ nav ul li a._selected svg path {
   text-align: center;
   border-radius: 10px;
   flex: 1;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .section-selection ul li a {
@@ -597,4 +834,85 @@ footer section .row p {
 
 .setting-list li a svg path {
   fill: #d53235;
+}
+
+.profile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile section.profile-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  column-gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #2d2d2d;
+}
+
+.profile section.profile-title img {
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  outline: 2px solid #fff;
+}
+
+.profile section.profile-title a {
+  padding: 20px;
+  display: flex;
+  column-gap: 10px;
+  margin-left: auto;
+}
+
+.profile section.profile-title a svg {
+  height: 24px;
+  width: 21px;
+}
+
+.profile section.profile-title a svg path {
+  fill: #ababab;
+}
+
+.profile section.post-wrapper {
+  flex: 1;
+}
+
+.profile section.post-wrapper article {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  row-gap: 15px;
+  height: 100%;
+  justify-content: center;
+}
+
+.profile section.post-wrapper article > svg {
+  height: 70px;
+  width: 70px;
+  display: block;
+}
+
+.profile section.post-wrapper article > svg path {
+  fill: #ababab;
+}
+
+.profile section.post-wrapper article > span {
+  display: block;
+}
+
+.profile section.post-wrapper article > a {
+  display: block;
+  background-color: #2d2d2d;
+  width: 150px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #1f1f1f;
+  outline: 2px solid transparent;
+}
+
+.profile section.post-wrapper article > a:hover, .profile section.post-wrapper article > a:focus {
+  outline: 2px solid #fff;
 }

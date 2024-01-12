@@ -15,6 +15,9 @@
       text-align: center;
       border-radius: 10px;
       flex: 1;
+      display: flex;
+      align-content: center;
+      flex-wrap: wrap;
 
       a {
         display: inline-block;

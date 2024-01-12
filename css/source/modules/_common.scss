@@ -27,6 +27,8 @@ body {
       .wrapper {
         margin: 0 5px;
         height: 100%;
+        display: flex;
+        flex-direction: column;
       }
     }
   }
@@ -54,6 +56,268 @@ body {
     box-shadow: inset 0 0 20px 20px #23232329;
   }
 }
+
+.popup {
+  color: black;
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  background: rgb(255, 254, 254);
+  padding: 25px;
+  border-radius: 15px;
+  top: 10%;
+  max-width: 380px;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%) scale(1.2);
+  transition: top 0s 0.2s ease-in-out,
+  opacity 0.2s 0s ease-in-out,
+  transform 0.2s 0s ease-in-out;
+
+  &.show {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    transition: top 0s 0s ease-in-out,
+    opacity 0.2s 0s ease-in-out,
+    transform 0.2s 0s ease-in-out;
+  }
+
+  :is(.heading, .icons, .field) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .heading {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ebedf9;
+
+    span {
+      font-size: 21px;
+      font-weight: 600;
+
+      .close, .icons a {
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+      }
+
+    }
+
+    .close {
+      background: #f3f3f3;
+      height: 34px;
+      width: 34px;
+      cursor: pointer;
+      border-radius: 50%;
+
+      svg {
+        padding: 5px;
+        height: 24px;
+        width: 24px;
+
+        path {
+          fill: #878787;
+        }
+      }
+
+      &:hover {
+        background: #ebedf9;
+      }
+    }
+
+
+  }
+
+  .content {
+    margin: 20px 0;
+
+
+    p {
+      font-size: 16px;
+    }
+
+    .icons {
+      margin: 15px 0 20px 0;
+      list-style: none;
+      padding: 0;
+
+      li {
+        height: 50px;
+        width: 50px;
+        font-size: 20px;
+        text-decoration: none;
+        border: 1px solid transparent;
+        border-radius: 50%;
+
+        a {
+          height: 50px;
+          width: 50px;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          flex-wrap: wrap;
+        }
+
+        svg {
+          transition: transform 0.3s ease-in-out;
+          height: 24px;
+          width: 24px;
+        }
+
+
+        &:nth-child(1) {
+
+          border-color: #b7d4fb;
+
+          svg {
+            path {
+              fill: #1877F2;
+            }
+          }
+
+          &:hover {
+            background: #1877F2;
+          }
+        }
+
+        &:nth-child(2) {
+          border-color: #898989;
+
+          svg {
+            path {
+              fill: #000;
+            }
+          }
+
+          &:hover {
+            background: #000;
+          }
+        }
+
+        &:nth-child(3) {
+
+          border-color: #f5bccf;
+
+          svg {
+            path {
+              fill: #e1306c;
+            }
+          }
+
+          &:hover {
+            background: #e1306c;
+          }
+        }
+
+        &:nth-child(4) {
+          border-color: #bef4d2;
+
+          svg {
+            path {
+              fill: #25D366;
+            }
+          }
+
+          &:hover {
+            background: #25D366;
+          }
+        }
+
+        &:nth-child(5) {
+          border-color: #b3e6ff;
+
+          svg {
+            path {
+              fill: #0088cc;
+            }
+          }
+
+          &:hover {
+            background: #0088cc;
+          }
+        }
+
+        &:hover {
+          background-color: transparent;
+
+          svg {
+            transform: scale(1.2);
+
+            path {
+              fill: #fff;
+            }
+          }
+        }
+
+
+      }
+
+
+    }
+
+
+    .field {
+      margin: 12px 0 -5px 0;
+      height: 45px;
+      border-radius: 4px;
+      padding: 0 0 0 5px;
+      border: 1px solid #757171;
+
+      svg {
+        width: 50px;
+        font-size: 18px;
+        text-align: center;
+      }
+
+      input {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #757171;
+        border-right: 0;
+        border-left: 0;
+        outline: none;
+        font-size: 15px;
+      }
+
+      button {
+        height: 100%;
+        background-color: $primary-color;
+        padding: 5px 18px;
+        border-radius: 5px;
+        color: $font-color;
+        border: none;
+
+        &:hover {
+          background: $primary-color__hover;
+        }
+      }
+
+      &.active {
+        border-color: #7d2ae8;
+
+        svg {
+          color: #7d2ae8;
+        }
+      }
+    }
+
+  }
+
+
+}
+
+.hidden {
+  display: none !important;
+}
+
 
 .desktop-only {
   display: none;

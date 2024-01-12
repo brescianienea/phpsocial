@@ -1,7 +1,8 @@
 <?php
-include('query/getters/getters.php');
-$userInfo = InfoGetter::getUserInfoByID($_SESSION['user_id']);
-$username = InfoGetter::getUsernameByID($_SESSION['user_id'])['username'];
+include('query/user/user.php');
+include('query/post/post.php');
+$userInfo = User::getUserInfoByID($_SESSION['user_id']);
+$username = User::getUsernameByID($_SESSION['user_id'])['username'];
 ?>
 <div class="profile">
     <div class="popup">
@@ -45,7 +46,7 @@ $username = InfoGetter::getUsernameByID($_SESSION['user_id'])['username'];
         </a>
     </section>
     <section class="post-wrapper">
-        <?php $postList = InfoGetter::getPostsByID($_SESSION['user_id']); ?>
+        <?php $postList = Post::getPostsByID($_SESSION['user_id']); ?>
         <?php if (is_array($postList)): ?>
         <?php else: ?>
             <article>

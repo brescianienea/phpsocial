@@ -1,9 +1,10 @@
 nav {
   background-color: $background-color__dark;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   bottom: 0;
   border-top: 2px solid $border-color__dark;
+  z-index: 9999;
 
   ul {
     list-style: none;

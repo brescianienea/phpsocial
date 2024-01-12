@@ -1,5 +1,7 @@
 <?php
-class Post {
+
+class Post
+{
     static function getPostsByID($userData)
     {
         try {
@@ -13,8 +15,8 @@ class Post {
             $userID = $userData;
             $response = [];
             if (!empty($userID)) {
-                $query = "SELECT post_id, content, datetime_posted FROM posts";
-                $query .= " WHERE user_id = " . $userID;
+                $query = "SELECT post_id, content, datetime_posted FROM post";
+                $query .= " WHERE member_id = " . $userID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
                     $result = $result->fetch_assoc();
@@ -22,7 +24,7 @@ class Post {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -31,5 +33,5 @@ class Post {
         }
     }
 
-    
+
 }

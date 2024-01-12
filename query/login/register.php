@@ -62,7 +62,7 @@ function registerUser($db, $userData)
                             } else {
                                 $resultArr = $result->fetch_array(MYSQLI_BOTH);
                                 $memberID = $resultArr['user_id'];
-                                $dateFinal = date("Y-m-d", strtotime('$year' . '-' . '$month' . '-' . '$day'));
+                                $dateFinal = date("Y-m-d", strtotime($year . '-' . $month . '-' . $day));
                                 $query = "INSERT INTO `members` (`member_id`, `email`, `birthdate`) VALUES ('$memberID', '$mail', '$dateFinal')";
 
                                 $db->query($query);

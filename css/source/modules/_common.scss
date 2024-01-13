@@ -21,7 +21,7 @@ body {
 
   main {
     overflow-x: hidden;
-    margin: 15px 0;
+    padding: 15px 0;
     flex: 1;
 
     .column {
@@ -317,8 +317,120 @@ body {
 
   }
 
-
 }
+
+.centered {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  article {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+
+    svg {
+      height: 4rem;
+      width: 4rem;
+
+      path {
+        fill: $font-color;
+      }
+    }
+
+    a {
+      display: block;
+      background-color: $background-color__light;
+      width: 150px;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px solid $background-color;
+      outline: 2px solid transparent;
+
+
+      &:hover, &:focus {
+        outline: 2px solid $icon-color__selected;
+      }
+
+
+    }
+  }
+}
+
+
+.section-selection {
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+
+    li {
+      width: 25%;
+      background-color: $background-color__light;
+      border: 2px solid $background-color;
+      outline: 2px solid transparent;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      flex: 1;
+      display: flex;
+      align-content: center;
+      flex-wrap: wrap;
+
+      a {
+
+        width: 100%;
+        color: $icon-color;
+        display: flex;
+        justify-content: center;
+
+
+        svg {
+          display: none;
+
+          path {
+            fill: $icon-color;
+          }
+        }
+
+        @media screen and (max-width: $screen-xs) {
+          svg {
+            display: block;
+            height: 32px;
+            width: 32px;
+          }
+          span {
+            display: none;
+          }
+        }
+
+      }
+
+      &._selected {
+
+        outline: 2px solid $icon-color__selected;
+
+        a {
+          color: $icon-color__selected;
+
+          svg {
+            path {
+              fill: $icon-color__selected;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 
 .hidden {
   display: none !important;

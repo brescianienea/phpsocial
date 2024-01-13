@@ -47,7 +47,22 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
     </section>
     <section class="post-wrapper">
         <?php $postList = Post::getPostsByID($_SESSION['user_id']); ?>
+
         <?php if (is_array($postList)): ?>
+            <ul class="post-list">
+            <?php foreach ($postList as $post): ?>
+                <li>
+                    <section>
+
+                        <span>Posted by <a><?= User::getUsernameByID($post['member_id'])['username'] ?> </a></span>
+                    </section>
+                    <h2><?= $post['title'] ?></h2>
+                    <button><?php include ('source/icons/share-nodes-solid.svg') ?></button>
+
+                </li>
+            <?php endforeach; ?>
+            </ul>
+
         <?php else: ?>
             <article class="centered">
                 <?php include('source/icons/photo-film-solid.svg') ?>

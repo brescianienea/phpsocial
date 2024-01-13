@@ -140,9 +140,26 @@ class User {
                 $query = "SELECT friends_id FROM friends";
                 $query .= " WHERE my_id = " . $userID;
                 $result = $db->query($query);
+                $query = "SELECT my_id FROM friends";
+                $query .= " WHERE friends_id = " . $userID;
+                $result2 = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_array(MYSQLI_NUM);
+                        array_push($response, $row);
+                        $i++;
+                    }
+
+                    $i = 0;
+                    while ($i < $result2->num_rows) {
+                        $row = $result2->fetch_array(MYSQLI_NUM);
+                        array_push($response, $row);
+                        $i++;
+                    }
+                    return $response;
+
                 } else {
                     return null;
                 }

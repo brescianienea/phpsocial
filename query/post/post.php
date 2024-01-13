@@ -14,12 +14,20 @@ class Post {
             $userID = $userData;
             $response = [];
             if (!empty($userID)) {
-                $query = "SELECT post_id, content, datetime_posted, tenor_tag, game_tag FROM post";
+                $query = "SELECT * FROM post";
                 $query .= " WHERE member_id = " . $userID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $posts = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($posts, $row);
+                        $i++;
+                    }
+
+                    return $posts;
                 } else {
                     return null;
                 }

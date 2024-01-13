@@ -28,6 +28,10 @@
             </div>
             <script>
 
+                $(document).ready(function () {
+                    $('.se-wrapper-code').attr('name', 'content');
+                });
+
                 $('#title').on("keyup", function () {
 
                     if ($('#title').val() === '') {
@@ -40,20 +44,20 @@
 
                 $('form').submit(function (e) {
                     e.preventDefault();
+                    $('.se-wrapper-code').val(editor.getContents());
                     $.ajax({
 
                         method: "POST",
-                        url: "/query/login/register.php",
-                        data: $('#registration_form').serialize(),
+                        url: "/query/post/addPost.php",
+                        data: $('form').serialize(),
                         success: function (data) {
                             console.log(data);
                             let result = JSON.parse(data);
                             if (result['message'] === 'success') {
-                                window.location.href = "login-page.php?section=login";
-                                alert('Registration completed. Please login.');
+                                window.location.href = "profile-page.php?section=profile";
+                                alert('Posted.');
                             } else {
                                 alert(result['message']);
-                                window.location.href = "login-page.php?section=register"
                             }
 
 

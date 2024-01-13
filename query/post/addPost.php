@@ -9,19 +9,24 @@ require_once("{$base_dir}dbcon.php");
 <?php
 $db = $conn;
 $userData = $_POST;
+
 addPost($db, $userData);
 
-function addPost($db, $userData) {
-    $member_id = $userData['member_id'];
+function addPost($db, $userData)
+{
+    $dateTime = date('m/d/Y h:i:s a');
+    $timestamp = strtotime($dateTime);
+    $member_id = $_SESSION['user_id'];
     $content = $userData['content'];
-    $datetime_posted = $userData['datetime_posted'];
-    $tenor_tag = $userData['tenor_tag'];
-    $game_tag = $userData['game_tag'];
+    $datetime_posted = date('Y-m-d H:i:s', $timestamp);
+
+    $tenor_tag = isset($userData['tenor_tag']) ? $userData['tenor_tag'] : '';
+    $game_tag = isset($userData['game_tag']) ? $userData['game_tag'] : '';
     $response = [];
 
     try {
         if (!empty($member_id) && !empty($content) && !empty($datetime_posted)) {
-            $query = "INSERT INTO `post` (`member_id`, `content`, `datetime_posted`, `tenor_tag`, `game_tag`) VALUES ('$member_id', '$content', " . date("Y-m-d") . ", '$tenor_tag', '$game_tag')";
+            $query = "INSERT INTO `post` (`member_id`, `content`, `datetime_posted`, `tenor_tag`, `game_tag`) VALUES ('$member_id', '$content', '" . $datetime_posted . "', '$tenor_tag', '$game_tag')";
             $db->query($query);
             $response['message'] = "success";
             //$response = array_merge($response, $result->fetch_array(MYSQLI_BOTH));

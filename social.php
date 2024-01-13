@@ -1,4 +1,8 @@
 <?php
+if (!$_GET['section']) {
+    header("Location: /social.php?section=chats");
+    exit();
+}
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -12,6 +16,21 @@
             <div class="wrapper">
                 <?php if ($_SESSION['logged'] == 'false'): ?>
                     <?php include('login-required.php'); ?>
+                <?php else: ?>
+                    <section class="section-selection">
+                        <ul>
+                            <li class="<?php if ($_GET['section'] == "chats"): ?> _selected <?php endif; ?>">
+                                <a href="/social.php?section=chats">Chats</a>
+                            </li>
+                            <li class="<?php if ($_GET['section'] == "requests"): ?> _selected <?php endif; ?>">
+                                <a href="/social.php?section=requests">Friend requests</a>
+                            </li>
+                            <li class="<?php if ($_GET['section'] == "notifications"): ?> _selected <?php endif; ?>">
+                                <a href="/social.php?section=notifications"><span>Notifications</span><?php include('source/icons/bell-solid.svg') ?>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
                 <?php endif; ?>
             </div>
         </div>

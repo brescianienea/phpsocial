@@ -49,7 +49,7 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
         <?php $postList = Post::getPostsByID($_SESSION['user_id']); ?>
         <?php if (is_array($postList)): ?>
         <?php else: ?>
-            <article>
+            <article class="centered">
                 <?php include('source/icons/photo-film-solid.svg') ?>
                 <span>You haven't posted anything yet.</span>
                 <a href="../new-post.php">Post Now</a>

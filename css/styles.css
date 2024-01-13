@@ -33,7 +33,7 @@ body {
 
 body main {
   overflow-x: hidden;
-  margin: 15px 0;
+  padding: 15px 0;
   flex: 1;
 }
 
@@ -302,6 +302,106 @@ body input:-webkit-autofill:active {
   color: #7d2ae8;
 }
 
+.centered {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.centered article {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+
+.centered article svg {
+  height: 4rem;
+  width: 4rem;
+}
+
+.centered article svg path {
+  fill: #fff;
+}
+
+.centered article a {
+  display: block;
+  background-color: #2d2d2d;
+  width: 150px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #1f1f1f;
+  outline: 2px solid transparent;
+}
+
+.centered article a:hover, .centered article a:focus {
+  outline: 2px solid #fff;
+}
+
+.section-selection ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+
+.section-selection ul li {
+  width: 25%;
+  background-color: #2d2d2d;
+  border: 2px solid #1f1f1f;
+  outline: 2px solid transparent;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.section-selection ul li a {
+  width: 100%;
+  color: #ababab;
+  display: flex;
+  justify-content: center;
+}
+
+.section-selection ul li a svg {
+  display: none;
+}
+
+.section-selection ul li a svg path {
+  fill: #ababab;
+}
+
+@media screen and (max-width: 375px) {
+  .section-selection ul li a svg {
+    display: block;
+    height: 32px;
+    width: 32px;
+  }
+  .section-selection ul li a span {
+    display: none;
+  }
+}
+
+.section-selection ul li._selected {
+  outline: 2px solid #fff;
+}
+
+.section-selection ul li._selected a {
+  color: #fff;
+}
+
+.section-selection ul li._selected a svg path {
+  fill: #fff;
+}
+
 .hidden {
   display: none !important;
 }
@@ -386,42 +486,6 @@ nav ul li a._selected svg path {
   fill: #fff;
 }
 
-.section-selection ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
-  column-gap: 10px;
-}
-
-.section-selection ul li {
-  width: 25%;
-  background-color: #2d2d2d;
-  border: 2px solid #1f1f1f;
-  outline: 2px solid transparent;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-  flex: 1;
-  display: flex;
-  align-content: center;
-  flex-wrap: wrap;
-}
-
-.section-selection ul li a {
-  display: inline-block;
-  width: 100%;
-  color: #ababab;
-}
-
-.section-selection ul li._selected {
-  outline: 2px solid #fff;
-}
-
-.section-selection ul li._selected a {
-  color: #fff;
-}
-
 footer section {
   margin-top: auto;
   margin-bottom: 90px;
@@ -443,46 +507,6 @@ footer section .row p {
   font-size: 0.8rem;
   text-align: center;
   width: 100%;
-}
-
-.login-needed {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.login-needed article {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  text-align: center;
-  align-content: center;
-  align-items: center;
-}
-
-.login-needed article svg {
-  height: 4rem;
-  width: 4rem;
-}
-
-.login-needed article svg path {
-  fill: #fff;
-}
-
-.login-needed article a {
-  display: block;
-  background-color: #2d2d2d;
-  width: 150px;
-  padding: 15px;
-  border-radius: 10px;
-  border: 2px solid #1f1f1f;
-  outline: 2px solid transparent;
-}
-
-.login-needed article a:hover, .login-needed article a:focus {
-  outline: 2px solid #fff;
 }
 
 .login {

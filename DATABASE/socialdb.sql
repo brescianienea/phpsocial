@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 09, 2024 at 11:46 PM
+-- Generation Time: Jan 13, 2024 at 12:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -112,6 +112,13 @@ CREATE TABLE `members` (
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`member_id`, `ign`, `email`, `image`, `birthdate`, `status`) VALUES
+(11, '', 'ciao@gmail.com', '', '1970-01-01', '');
+
 -- --------------------------------------------------------
 
 --
@@ -155,17 +162,19 @@ CREATE TABLE `post` (
   `post_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
   `content` varchar(1000) NOT NULL,
-  `datetime_posted` datetime NOT NULL
+  `datetime_posted` datetime NOT NULL,
+  `tenor_tag` tinyint(4) DEFAULT NULL,
+  `game_tag` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`post_id`, `member_id`, `content`, `datetime_posted`) VALUES
-(2, 1, 'test', '2014-06-20 21:55:52'),
-(3, 1, 'demo', '2019-02-27 18:07:13'),
-(4, 10, 'hello world', '2019-03-16 22:26:11');
+INSERT INTO `post` (`post_id`, `member_id`, `content`, `datetime_posted`, `tenor_tag`, `game_tag`) VALUES
+(2, 1, 'test', '2014-06-20 21:55:52', NULL, NULL),
+(3, 1, 'demo', '2019-02-27 18:07:13', NULL, NULL),
+(4, 10, 'hello world', '2019-03-16 22:26:11', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -197,7 +206,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `admin`) VALUES
 (5, 'admin', 'admin', 0),
-(10, 'teph', 'teph', 0);
+(10, 'teph', 'teph', 0),
+(11, 'asd', '$2y$10$Tg/WzCR4D5m6RlCDLt2Si.4L5KvUQzEfhcVcQSJSYldzAatwKHhk6', 0);
 
 --
 -- Indexes for dumped tables
@@ -243,7 +253,8 @@ ALTER TABLE `likes`
 -- Indexes for table `members`
 --
 ALTER TABLE `members`
-  ADD PRIMARY KEY (`member_id`);
+  ADD PRIMARY KEY (`member_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `message`
@@ -273,7 +284,8 @@ ALTER TABLE `reaction`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -301,7 +313,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

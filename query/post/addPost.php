@@ -20,16 +20,9 @@ function addPost($db, $userData) {
     $response = [];
 
     try {
-        if (!empty($member_id) || !empty($content) || !empty($datetime_posted)) {
-            $date = $year . "-" . $month . "-" . $day;
-            $dateTimeStamp = strtotime($date);
-            $currentTimestamp = time();
-    
+        if (!empty($member_id) && !empty($content) && !empty($datetime_posted)) {
             $query = "INSERT INTO `post` (`member_id`, `content`, `datetime_posted`, `tenor_tag`, `game_tag`) VALUES ('$member_id', '$content', " . date("Y-m-d") . ", '$tenor_tag', '$game_tag')";
             $db->query($query);
-            $query = "SELECT user_id FROM " . tableName;
-            $query .= " WHERE username = '$username'";
-            $result = $db->query($query);
             $response['message'] = "success";
             //$response = array_merge($response, $result->fetch_array(MYSQLI_BOTH));
         } else {

@@ -46,6 +46,7 @@ class Comment {
             if (!empty($postID)) {
                 $query = "SELECT id, user_id, content FROM comments";
                 $query .= " WHERE comment_id = " . $postID; //comment_id è l'id del post lol
+                $query .= " ORDER BY id DESC";
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
                     $result = $result->fetch_assoc();
@@ -77,6 +78,7 @@ class Comment {
             if (!empty($userID)) {
                 $query = "SELECT id, comment_id, content FROM comments"; //comment_id è l'id del post lol
                 $query .= " WHERE user_id = " . $userID;
+                $query .= " ORDER BY id DESC";
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
                     $result = $result->fetch_assoc();
@@ -108,6 +110,7 @@ class Comment {
             if (!empty($postID)) {
                 $query = "SELECT user_id, comment_id, content FROM comments";
                 $query .= " WHERE id = " . $commentID;
+                $query .= " ORDER BY id DESC";
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
                     $result = $result->fetch_assoc();

@@ -390,4 +390,35 @@ class User {
             echo 'Caught exception: ', $e->getMessage(), "\n";
         }
     }
+
+    static function getTokenByUsername($userData)
+    {
+        try {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+            $ds = DIRECTORY_SEPARATOR;
+            $base_dir = realpath(dirname(__FILE__) . $ds . '..' . $ds . '..') . $ds;
+            require("{$base_dir}dbcon.php");
+            $db = $conn;
+            $userID = getIDByUsername($userData);
+            $response = [];
+            if (!empty($userID)) {
+                $query = "SELECT token FROM users";
+                $query .= " WHERE user_id = " . $userID;
+                $result = $db->query($query);
+                if ($result->num_rows > 0) {
+                    $result = $result->fetch_assoc();
+                    return $result;
+                } else {
+                    return null;
+                }
+    
+            } else {
+                return null;
+            }
+        } catch (Exception $e) {
+            echo 'Caught exception: ', $e->getMessage(), "\n";
+        }
+    }
 }

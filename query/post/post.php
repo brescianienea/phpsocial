@@ -32,6 +32,8 @@ class Post
                 }
                 if ($sorting == "popularity") {
                     $query .= " GROUP BY post.post_id ORDER BY likeNum";
+                } else {
+                    $query .= " ORDER BY datetime_posted DESC";
                 }
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
@@ -96,6 +98,8 @@ class Post
                     }
                     if ($sorting == "popularity") {
                         $query .= " GROUP BY post.post_id ORDER BY likeNum";
+                    } else {
+                        $query .= " ORDER BY datetime_posted DESC";
                     }
                     $result = $db->query($query);
                     if ($result->num_rows > 0) {
@@ -146,6 +150,8 @@ class Post
                 }
                 if ($sorting == "popularity") {
                     $query .= " GROUP BY post.post_id ORDER BY likeNum";
+                } else {
+                    $query .= " ORDER BY datetime_posted DESC";
                 }
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
@@ -188,6 +194,8 @@ class Post
             }
             if ($sorting == "popularity") {
                 $query .= " GROUP BY post.post_id ORDER BY likeNum";
+            } else {
+                $query .= " ORDER BY datetime_posted DESC";
             }
             $result = $db->query($query);
             $posts = [];

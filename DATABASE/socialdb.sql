@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 13, 2024 at 12:55 AM
+-- Generation Time: Jan 16, 2024 at 12:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -190,6 +190,17 @@ CREATE TABLE `reaction` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tokens`
+--
+
+CREATE TABLE `tokens` (
+  `user_id` int(11) NOT NULL,
+  `token` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -279,6 +290,12 @@ ALTER TABLE `post`
 --
 ALTER TABLE `reaction`
   ADD PRIMARY KEY (`user_id`,`comment_id`);
+
+--
+-- Indexes for table `tokens`
+--
+ALTER TABLE `tokens`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- Indexes for table `users`

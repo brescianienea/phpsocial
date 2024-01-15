@@ -1,5 +1,7 @@
 <?php
-class Post {
+
+class Post
+{
 
     static function getPostsByID($userData, $tenorTag = null, $gameTag = null, $sorting = null)
     {
@@ -15,21 +17,21 @@ class Post {
             $response = [];
             if (!empty($userID)) {
                 $query = "";
-                if($sorting == null) {
+                if ($sorting == null) {
                     $query = "SELECT * FROM post";
                     $query .= " WHERE member_id = " . $userID;
-                } else if($sorting == "popularity") {
+                } else if ($sorting == "popularity") {
                     $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
                     $query .= " WHERE member_id = " . $userID;
                 }
-                if($tenorTag != null) {
+                if ($tenorTag != null) {
                     $query .= " AND WHERE tenor_tag = " . $tenorTag;
                 }
-                if($gameTag != null) {
+                if ($gameTag != null) {
                     $query .= " AND WHERE game_tag = " . $gameTag;
                 }
-                if($sorting == "popularity") {
-                    $query .= " GROUP BY post.post_id ORDER BY likeNum"
+                if ($sorting == "popularity") {
+                    $query .= " GROUP BY post.post_id ORDER BY likeNum";
                 }
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
@@ -70,8 +72,8 @@ class Post {
             if (!empty($userID)) {
                 $posts = [];
                 $users = "";
-                foreach($userID as $ID) {
-                    if($users == "") {
+                foreach ($userID as $ID) {
+                    if ($users == "") {
                         $users = " WHERE member_id = " . $ID;
                     } else {
                         $users .= " OR member_id = " . $ID;
@@ -79,21 +81,21 @@ class Post {
                 }
                 if ($users != "") {
                     $query = "";
-                    if($sorting == null) {
+                    if ($sorting == null) {
                         $query = "SELECT * FROM post";
                         $query .= " WHERE member_id = " . $userID;
-                    } else if($sorting == "popularity") {
+                    } else if ($sorting == "popularity") {
                         $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
                         $query .= " WHERE member_id = " . $userID;
                     }
-                    if($tenorTag != null) {
+                    if ($tenorTag != null) {
                         $query .= " AND WHERE tenor_tag = " . $tenorTag;
                     }
-                    if($gameTag != null) {
+                    if ($gameTag != null) {
                         $query .= " AND WHERE game_tag = " . $gameTag;
                     }
-                    if($sorting == "popularity") {
-                        $query .= " GROUP BY post.post_id ORDER BY likeNum"
+                    if ($sorting == "popularity") {
+                        $query .= " GROUP BY post.post_id ORDER BY likeNum";
                     }
                     $result = $db->query($query);
                     if ($result->num_rows > 0) {
@@ -129,21 +131,21 @@ class Post {
             $response = [];
             if (!empty($postID)) {
                 $query = "";
-                if($sorting == null) {
+                if ($sorting == null) {
                     $query = "SELECT * FROM post";
                     $query .= " WHERE post_id = " . $postID;
-                } else if($sorting == "popularity") {
+                } else if ($sorting == "popularity") {
                     $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
                     $query .= " WHERE post_id = " . $postID;
                 }
-                if($tenorTag != null) {
+                if ($tenorTag != null) {
                     $query .= " AND WHERE tenor_tag = " . $tenorTag;
                 }
-                if($gameTag != null) {
+                if ($gameTag != null) {
                     $query .= " AND WHERE game_tag = " . $gameTag;
                 }
-                if($sorting == "popularity") {
-                    $query .= " GROUP BY post.post_id ORDER BY likeNum"
+                if ($sorting == "popularity") {
+                    $query .= " GROUP BY post.post_id ORDER BY likeNum";
                 }
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
@@ -152,7 +154,7 @@ class Post {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -173,24 +175,33 @@ class Post {
             $db = $conn;
             $response = [];
             $query = "";
-                if($sorting == null) {
-                    $query = "SELECT * FROM post";
-                } else if($sorting == "popularity") {
-                    $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
-                }
-                if($tenorTag != null) {
-                    $query .= " AND WHERE tenor_tag = " . $tenorTag;
-                }
-                if($gameTag != null) {
-                    $query .= " AND WHERE game_tag = " . $gameTag;
-                }
-                if($sorting == "popularity") {
-                    $query .= " GROUP BY post.post_id ORDER BY likeNum"
-                }
+            if ($sorting == null) {
+                $query = "SELECT * FROM post";
+            } else if ($sorting == "popularity") {
+                $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
+            }
+            if ($tenorTag != null) {
+                $query .= " AND WHERE tenor_tag = " . $tenorTag;
+            }
+            if ($gameTag != null) {
+                $query .= " AND WHERE game_tag = " . $gameTag;
+            }
+            if ($sorting == "popularity") {
+                $query .= " GROUP BY post.post_id ORDER BY likeNum";
+            }
             $result = $db->query($query);
+            $posts = [];
             if ($result->num_rows > 0) {
-                $result = $result->fetch_assoc();
-                return $result;
+                //$result = $result->fetch_assoc();
+                $i = 0;
+                while ($i < $result->num_rows) {
+                    $row = $result->fetch_assoc();
+                    array_push($posts, $row);
+                    $i++;
+                }
+
+                return $posts;
+
             } else {
                 return null;
             }

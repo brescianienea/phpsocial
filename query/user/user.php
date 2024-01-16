@@ -356,7 +356,7 @@ class User {
             $sender = $userData;
             $response = [];
             if (!empty($sender)) {
-                $query = "SELECT receiver FROM friend_requests";
+                $query = "SELECT * FROM friend_requests";
                 $query .= " WHERE sender = " . $sender;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {

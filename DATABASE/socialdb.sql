@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 16, 2024 at 05:21 PM
+-- Generation Time: Jan 16, 2024 at 09:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -128,7 +128,7 @@ INSERT INTO `members` (`member_id`, `ign`, `email`, `image`, `birthdate`, `statu
 CREATE TABLE `message` (
   `message_id` int(11) NOT NULL,
   `sender_id` int(11) NOT NULL,
-  `reciever_id` int(11) NOT NULL,
+  `receiver_id` int(11) NOT NULL,
   `content` varchar(100) NOT NULL,
   `datetime_sent` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -137,7 +137,7 @@ CREATE TABLE `message` (
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`message_id`, `sender_id`, `reciever_id`, `content`, `datetime_sent`) VALUES
+INSERT INTO `message` (`message_id`, `sender_id`, `receiver_id`, `content`, `datetime_sent`) VALUES
 (1, 10, 1, 'hello', '2019-02-27 18:12:48');
 
 -- --------------------------------------------------------

@@ -25,10 +25,10 @@ class Post
                     $query .= " WHERE member_id = " . $userID;
                 }
                 if ($tenorTag != null) {
-                    $query .= " AND WHERE tenor_tag = " . $tenorTag;
+                    $query .= " AND tenor_tag = '" . $tenorTag . "'";
                 }
                 if ($gameTag != null) {
-                    $query .= " AND WHERE game_tag = " . $gameTag;
+                    $query .= " AND game_tag = '" . $gameTag . "'";
                 }
                 if ($sorting == "popularity") {
                     $query .= " GROUP BY post.post_id ORDER BY likeNum";
@@ -91,10 +91,10 @@ class Post
                         $query .= " WHERE member_id = " . $userID;
                     }
                     if ($tenorTag != null) {
-                        $query .= " AND WHERE tenor_tag = " . $tenorTag;
+                        $query .= " AND tenor_tag = '" . $tenorTag . "'";
                     }
                     if ($gameTag != null) {
-                        $query .= " AND WHERE game_tag = " . $gameTag;
+                        $query .= " AND game_tag = '" . $gameTag . "'";
                     }
                     if ($sorting == "popularity") {
                         $query .= " GROUP BY post.post_id ORDER BY likeNum";
@@ -143,10 +143,10 @@ class Post
                     $query .= " WHERE post_id = " . $postID;
                 }
                 if ($tenorTag != null) {
-                    $query .= " AND WHERE tenor_tag = " . $tenorTag;
+                    $query .= " AND tenor_tag = '" . $tenorTag . "'";
                 }
                 if ($gameTag != null) {
-                    $query .= " AND WHERE game_tag = " . $gameTag;
+                    $query .= " AND game_tag = '" . $gameTag . "'";
                 }
                 if ($sorting == "popularity") {
                     $query .= " GROUP BY post.post_id ORDER BY likeNum";
@@ -187,10 +187,10 @@ class Post
                 $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
             }
             if ($tenorTag != null) {
-                $query .= " AND WHERE tenor_tag = " . $tenorTag;
+                $query .= " AND tenor_tag = '" . $tenorTag . "'";
             }
             if ($gameTag != null) {
-                $query .= " AND WHERE game_tag = " . $gameTag;
+                $query .= " AND game_tag = '" . $gameTag . "'";
             }
             if ($sorting == "popularity") {
                 $query .= " GROUP BY post.post_id ORDER BY likeNum";

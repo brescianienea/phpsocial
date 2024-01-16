@@ -17,14 +17,21 @@ class Comment {
                 $query .= " WHERE comment_id = " . $commentID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $comments = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($comments, $row);
+                        $i++;
+                    }
+                    return $comments;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -59,11 +66,11 @@ class Comment {
                     }
                     return $comments;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";

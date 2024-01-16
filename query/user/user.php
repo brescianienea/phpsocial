@@ -79,14 +79,21 @@ class User {
                 $query .= " WHERE user_id = " . $userID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $users = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($users, $row);
+                        $i++;
+                    }
+                    return $users;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -282,14 +289,21 @@ class User {
                 $query .= " WHERE post_id = " . $postID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $users = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($users, $row);
+                        $i++;
+                    }
+                    return $users;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -356,11 +370,11 @@ class User {
                     }
                     return $friends;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -387,11 +401,11 @@ class User {
                     $result = $result->fetch_assoc();
                     return $result;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";

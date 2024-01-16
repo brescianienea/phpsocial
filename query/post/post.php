@@ -48,11 +48,11 @@ class Post
 
                     return $posts;
                 } else {
-                    return null;
+                    return [];
                 }
 
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -114,7 +114,7 @@ class Post
                 }
                 return $posts;
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -155,14 +155,21 @@ class Post
                 }
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $i = 0;
+                    $posts = [];
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($posts, $row);
+                        $i++;
+                    }
+                    return $posts;
                 } else {
-                    return null;
+                    return [];
                 }
 
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -217,7 +224,7 @@ class Post
                 return $posts;
 
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";

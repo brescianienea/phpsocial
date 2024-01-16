@@ -19,14 +19,21 @@ class Message {
                 $query .= " WHERE receiver_id = " . $receiverID;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $mex = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($mex, $row);
+                        $i++;
+                    }
+                    return $mex;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";

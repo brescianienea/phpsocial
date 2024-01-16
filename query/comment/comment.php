@@ -49,8 +49,15 @@ class Comment {
                 $query .= " ORDER BY id DESC";
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $comments = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($comments, $row);
+                        $i++;
+                    }
+                    return $comments;
                 } else {
                     return null;
                 }
@@ -81,8 +88,15 @@ class Comment {
                 $query .= " ORDER BY id DESC";
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $comments = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($comments, $row);
+                        $i++;
+                    }
+                    return $comments;
                 } else {
                     return null;
                 }
@@ -113,8 +127,15 @@ class Comment {
                 $query .= " ORDER BY id DESC";
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $comments = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($comments, $row);
+                        $i++;
+                    }
+                    return $comments;
                 } else {
                     return null;
                 }

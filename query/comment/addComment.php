@@ -13,13 +13,14 @@ $userData = $_POST;
 addToken($db, $userData);
 
 function addToken($db, $userData) {
-    $user_id = User::getIDByUsername($userData['username']);
-    $token = $userData['token'];
+    $user_id = $userData['user_id'];
+    $comment_id = $userData['post_id'];
+    $content = $userData['content'];
     $response = [];
 
     try {
-        if (!empty($userID) && !empty($token)) {
-            $query = "INSERT INTO `tokens` (`user_id`, `token`) VALUES ('$user_id', '$token')";
+        if (!empty($user_id) && !empty($comment_id) && !empty($content)) {
+            $query = "INSERT INTO `comments` (`user_id`, `comment_id`, `content`) VALUES ('$user_id', '$comment_id', `$content`)";
             $db->query($query);
             $response['message'] = "success";
         } else {

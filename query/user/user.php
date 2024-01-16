@@ -356,7 +356,7 @@ class User {
             $sender = $userData;
             $response = [];
             if (!empty($sender)) {
-                $query = "SELECT * FROM friend_requests";
+                $query = "SELECT receiver FROM friend_requests";
                 $query .= " WHERE sender = " . $sender;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
@@ -365,9 +365,10 @@ class User {
                     $i = 0;
                     while ($i < $result->num_rows) {
                         $row = $result->fetch_assoc();
-                        array_push($friends, $row);
+                        array_push($friends, $row['receiver']);
                         $i++;
                     }
+
                     return $friends;
                 } else {
                     return [];
@@ -398,8 +399,16 @@ class User {
                 $query .= " WHERE receiver = " . $receiver;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $friends = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($friends, $row['sender']);
+                        $i++;
+                    }
+
+                    return $friends;
                 } else {
                     return [];
                 }

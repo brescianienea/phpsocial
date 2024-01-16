@@ -20,18 +20,18 @@ function addFriend($db, $userData) {
         if (!empty($my_id) && !empty($friends_id)) {
             $query = "SELECT sender FROM friend_requests";
             $query .= " WHERE sender = '$my_id'";
-            $query .= " AND WHERE receiver = '$friends_id'";
-            $query .= " OR WHERE sender = '$friends_id'";
-            $query .= " AND WHERE receiver = '$my_id'";
+            $query .= " AND receiver = '$friends_id'";
+            $query .= " OR sender = '$friends_id'";
+            $query .= " AND receiver = '$my_id'";
             $result = $db->query($query);
             if ($result->num_rows > 0) {
                 $query = "INSERT INTO `friends` (`my_id`, `friends_id`) VALUES ('$my_id', '$friends_id')";
                 $db->query($query);
                 $query = "DELETE FROM friend_requests";
                 $query .= " WHERE sender = '$my_id'";
-                $query .= " AND WHERE receiver = '$friends_id'";
-                $query .= " OR WHERE sender = '$friends_id'";
-                $query .= " AND WHERE receiver = '$my_id'";
+                $query .= " AND receiver = '$friends_id'";
+                $query .= " OR sender = '$friends_id'";
+                $query .= " AND receiver = '$my_id'";
                 $db->query($query);
                 $response['message'] = "success";
                 //$response = array_merge($response, $result->fetch_array(MYSQLI_BOTH));

@@ -186,11 +186,17 @@ class Post
             } else {
                 $query = "SELECT * FROM post";
             }
+            if($tenorTag != null || $gameTag != null) {
+                $query .= " WHERE";
+            }
             if ($tenorTag != null) {
-                $query .= " AND tenor_tag = '" . $tenorTag . "'";
+                $query .= " tenor_tag = '" . $tenorTag . "'";
             }
             if ($gameTag != null) {
-                $query .= " AND game_tag = '" . $gameTag . "'";
+                if($tenorTag != null) {
+                    $query .= " AND";
+                }
+                $query .= " game_tag = '" . $gameTag . "'";
             }
             if ($sorting == "popularity") {
                 $query .= " GROUP BY post.post_id ORDER BY likeNum";

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 16, 2024 at 12:37 AM
+-- Generation Time: Jan 16, 2024 at 05:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -163,8 +163,8 @@ CREATE TABLE `post` (
   `member_id` int(11) NOT NULL,
   `content` varchar(1000) NOT NULL,
   `datetime_posted` datetime NOT NULL,
-  `tenor_tag` tinyint(4) DEFAULT NULL,
-  `game_tag` tinyint(4) DEFAULT NULL
+  `tenor_tag` text DEFAULT NULL,
+  `game_tag` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

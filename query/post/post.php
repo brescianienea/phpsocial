@@ -17,11 +17,11 @@ class Post
             $response = [];
             if (!empty($userID)) {
                 $query = "";
-                if ($sorting == null) {
-                    $query = "SELECT * FROM post";
-                    $query .= " WHERE member_id = " . $userID;
-                } else if ($sorting == "popularity") {
+                if ($sorting == "popularity") {
                     $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
+                    $query .= " WHERE member_id = " . $userID;
+                } else {
+                    $query = "SELECT * FROM post";
                     $query .= " WHERE member_id = " . $userID;
                 }
                 if ($tenorTag != null) {
@@ -83,11 +83,11 @@ class Post
                 }
                 if ($users != "") {
                     $query = "";
-                    if ($sorting == null) {
-                        $query = "SELECT * FROM post";
-                        $query .= " WHERE member_id = " . $userID;
-                    } else if ($sorting == "popularity") {
+                    if ($sorting == "popularity") {
                         $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
+                        $query .= " WHERE member_id = " . $userID;
+                    } else {
+                        $query = "SELECT * FROM post";
                         $query .= " WHERE member_id = " . $userID;
                     }
                     if ($tenorTag != null) {
@@ -135,11 +135,11 @@ class Post
             $response = [];
             if (!empty($postID)) {
                 $query = "";
-                if ($sorting == null) {
-                    $query = "SELECT * FROM post";
-                    $query .= " WHERE post_id = " . $postID;
-                } else if ($sorting == "popularity") {
+                if ($sorting == "popularity") {
                     $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
+                    $query .= " WHERE post_id = " . $postID;
+                } else {
+                    $query = "SELECT * FROM post";
                     $query .= " WHERE post_id = " . $postID;
                 }
                 if ($tenorTag != null) {
@@ -181,10 +181,10 @@ class Post
             $db = $conn;
             $response = [];
             $query = "";
-            if ($sorting == null) {
-                $query = "SELECT * FROM post";
-            } else if ($sorting == "popularity") {
+            if ($sorting == "popularity") {
                 $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
+            } else {
+                $query = "SELECT * FROM post";
             }
             if ($tenorTag != null) {
                 $query .= " AND tenor_tag = '" . $tenorTag . "'";

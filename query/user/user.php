@@ -1,7 +1,5 @@
 <?php
-
-class User
-{
+class User {
     static function getUserInfoByID($userData)
     {
         try {
@@ -24,7 +22,7 @@ class User
                 } else {
                     return null;
                 }
-
+    
             } else {
                 return null;
             }
@@ -55,7 +53,7 @@ class User
                 } else {
                     return null;
                 }
-
+    
             } else {
                 return null;
             }
@@ -93,7 +91,7 @@ class User
                 } else {
                     return [];
                 }
-
+    
             } else {
                 return [];
             }
@@ -124,7 +122,7 @@ class User
                 } else {
                     return null;
                 }
-
+    
             } else {
                 return null;
             }
@@ -152,27 +150,26 @@ class User
                 $query = "SELECT my_id FROM friends";
                 $query .= " WHERE friends_id = " . $userID;
                 $result2 = $db->query($query);
-                if ($result->num_rows > 0) {
+                if ($result->num_rows > 0 || $result2->num_rows > 0) {
 
                     $i = 0;
                     while ($i < $result->num_rows) {
-                        $row = $result->fetch_array(MYSQLI_NUM);
-                        array_push($response, $row);
+                        $row = $result->fetch_assoc();
+                        array_push($response, $row['friends_id']);
                         $i++;
                     }
 
                     $i = 0;
                     while ($i < $result2->num_rows) {
-                        $row = $result2->fetch_array(MYSQLI_NUM);
-                        array_push($response, $row);
+                        $row = $result2->fetch_assoc();
+                        array_push($response, $row['friends_id']);
                         $i++;
                     }
                     return $response;
-
                 } else {
                     return [];
                 }
-
+    
             } else {
                 return [];
             }
@@ -203,7 +200,7 @@ class User
                 } else {
                     return null;
                 }
-
+    
             } else {
                 return null;
             }
@@ -234,7 +231,7 @@ class User
                 } else {
                     return null;
                 }
-
+    
             } else {
                 return null;
             }
@@ -265,7 +262,7 @@ class User
                 } else {
                     return null;
                 }
-
+    
             } else {
                 return null;
             }
@@ -303,7 +300,7 @@ class User
                 } else {
                     return [];
                 }
-
+    
             } else {
                 return [];
             }
@@ -336,7 +333,7 @@ class User
                 } else {
                     return null;
                 }
-
+    
             } else {
                 return null;
             }
@@ -357,12 +354,10 @@ class User
             $db = $conn;
             $sender = $userData;
             $response = [];
-            $friends = [];
             if (!empty($sender)) {
                 $query = "SELECT receiver FROM friend_requests";
                 $query .= " WHERE sender = " . $sender;
                 $result = $db->query($query);
-
                 if ($result->num_rows > 0) {
                     //$result = $result->fetch_assoc();
                     $friends = [];
@@ -377,7 +372,7 @@ class User
                 } else {
                     return [];
                 }
-
+    
             } else {
                 return [];
             }
@@ -416,7 +411,7 @@ class User
                 } else {
                     return [];
                 }
-
+    
             } else {
                 return [];
             }
@@ -445,11 +440,11 @@ class User
                     $result = $result->fetch_assoc();
                     return $result;
                 } else {
-                    return $response;
+                    return null;
                 }
-
+    
             } else {
-                return $response;
+                return null;
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";

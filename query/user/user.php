@@ -1,5 +1,7 @@
 <?php
-class User {
+
+class User
+{
     static function getUserInfoByID($userData)
     {
         try {
@@ -22,7 +24,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -53,7 +55,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -91,7 +93,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -122,7 +124,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -141,7 +143,7 @@ class User {
             $base_dir = realpath(dirname(__FILE__) . $ds . '..' . $ds . '..') . $ds;
             require("{$base_dir}dbcon.php");
             $db = $conn;
-            $userID = $userData;
+            $userID = $_SESSION['user_id'];
             $response = [];
             if (!empty($userID)) {
                 $query = "SELECT friends_id FROM friends";
@@ -162,14 +164,14 @@ class User {
                     $i = 0;
                     while ($i < $result2->num_rows) {
                         $row = $result2->fetch_assoc();
-                        array_push($response, $row['friends_id']);
+                        array_push($response, $row['my_id']);
                         $i++;
                     }
                     return $response;
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -200,7 +202,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -231,7 +233,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -262,7 +264,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -300,7 +302,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -333,7 +335,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -372,7 +374,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -411,7 +413,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -442,7 +444,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }

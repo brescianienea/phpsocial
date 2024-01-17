@@ -49,14 +49,21 @@ class Notification {
                 $query .= " WHERE receiver_id = " . $receiver;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $not = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($not, $row);
+                        $i++;
+                    }
+                    return $not;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
@@ -80,14 +87,21 @@ class Notification {
                 $query .= " WHERE sender_id = " . $sender;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    //$result = $result->fetch_assoc();
+                    $not = [];
+                    $i = 0;
+                    while ($i < $result->num_rows) {
+                        $row = $result->fetch_assoc();
+                        array_push($not, $row);
+                        $i++;
+                    }
+                    return $not;
                 } else {
-                    return null;
+                    return [];
                 }
     
             } else {
-                return null;
+                return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";

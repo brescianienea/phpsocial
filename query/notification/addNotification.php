@@ -10,18 +10,18 @@ require_once("{$base_dir}dbcon.php");
 require_once("../user/user.php");
 $db = $conn;
 $userData = $_POST;
-addComment($db, $userData);
+addNotification($db, $userData);
 
-function addComment($db, $userData)
+function addNotification($db, $userData)
 {
     $user_id = $_SESSION['user_id'];
-    $comment_id = $userData['post_id'];
-    $content = $userData['comment'];
+    $friendreq_notification = $userData['friendreq_notification'];
+    $chat_notification = $userData['chat_notification'];
     $response = [];
 
     try {
-        if (!empty($user_id) && !empty($comment_id) && !empty($content)) {
-            $query = "INSERT INTO `comments` (`user_id`, `comment_id`, `content`) VALUES ('$user_id', '$comment_id', '$content')";
+        if (!empty($user_id) && !empty($friendreq_notification) && !empty($chat_notification)) {
+            $query = "INSERT INTO `notifications` (`user_id`, `friendreq_notification`, `chat_notification`) VALUES ('$user_id', '$friendreq_notification', '$chat_notification')";
             $db->query($query);
             $response['message'] = "success";
         } else {

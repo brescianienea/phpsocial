@@ -75,3 +75,28 @@
   }
 
 }
+
+.tags, .filters {
+  display: flex;
+  column-gap: 5px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .select {
+    display: flex;
+    flex: 1;
+    column-gap: 5px;
+  }
+
+  label {
+    display: block;
+  }
+
+  select {
+    color: $font-color;
+    background: $background-color__light;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+  }
+}

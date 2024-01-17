@@ -20,9 +20,6 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
                     <a href="#"><?php include('source/icons/x-twitter.svg') ?></i></a>
                 </li>
                 <li>
-                    <a href="#"><?php include('source/icons/instagram.svg') ?></i></a>
-                </li>
-                <li>
                     <a href="#"><?php include('source/icons/whatsapp.svg') ?></i></a>
                 </li>
                 <li>
@@ -50,17 +47,24 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
 
         <?php if (is_array($postList)): ?>
             <ul class="post-list">
-            <?php foreach ($postList as $post): ?>
-                <li>
-                    <section>
+                <?php foreach ($postList as $post): ?>
+                    <li onclick="location.href = '../post.php?post_id=<?= $post['post_id'] ?>'">
 
-                        <span>Posted by <a><?= User::getUsernameByID($post['member_id'])['username'] ?> </a></span>
-                    </section>
-                    <h2><?= $post['title'] ?></h2>
-                    <button><?php include ('source/icons/share-nodes-solid.svg') ?></button>
+                        <section
+                        >
+                            <div class="game-icon <?= $post['game_tag'] ?>">
+                                <?php include('source/icons/' . $post['game_tag'] . '.svg') ?>
+                            </div>
 
-                </li>
-            <?php endforeach; ?>
+                            <span>Posted by <a><?= User::getUsernameByID($post['member_id'])['username'] ?> </a></span>
+                            <span class="topic">
+                                <?= $post['tenor_tag'] ?>
+                            </span>
+                        </section>
+                        <h2><?= $post['title'] ?></h2>
+
+                    </li>
+                <?php endforeach; ?>
             </ul>
 
         <?php else: ?>
@@ -102,4 +106,38 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
             }, 3000);
         }
     }
+
+    $('.share-facebook').on('click', function () {
+        let currentURL = $(this).attr('url');
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(currentURL), 'facebook-share');
+
+    });
+
+    $('.share-whatsapp').on('click', function () {
+        let currentURL = $(this).attr('url');
+        let encodedURL = encodeURIComponent(currentURL);
+
+        let whatsappURL = "https://wa.me/?text=Check out this page: " + encodedURL;
+
+        window.open(whatsappURL);
+
+    });
+
+    $('.share-telegram').on('click', function () {
+        var currentURL = $(this).attr('url');
+        var encodedURL = encodeURIComponent(currentURL);
+
+        var telegramURL = "tg://msg?text=Check out this page: " + encodedURL;
+
+        window.open(telegramURL);
+
+    });
+
+    $('.share-twitter').on('click', function () {
+        const currentURL = $(this).attr('url');
+
+        window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(currentURL), 'twitter-share');
+    })
+
+
 </script>

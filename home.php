@@ -23,9 +23,10 @@ if (!$_GET['section']) {
                         <li class="<?php if ($_GET['section'] == "discover"): ?> _selected <?php endif; ?>">
                             <a href="/home.php?section=discover">Discover</a>
                         </li>
+                        <?php /*
                         <li class="<?php if ($_GET['section'] == "news"): ?> _selected <?php endif; ?>">
                             <a href="/home.php?section=news">News</a>
-                        </li>
+                        </li> */ ?>
                     </ul>
                 </section>
                 <?php if ($_GET['section'] == "friends"): ?>

@@ -15,6 +15,37 @@
                 <?php else: ?>
                     <h1>New Post</h1>
                     <form class="new-post">
+                        <section class="tags">
+                            <div class="select">
+                                <label for="game_tag">Game: </label>
+                                <select id="game_tag" name="game_tag">
+                                    <option value="" selected disabled>-- Game --</option>
+                                    <option value="lol">League of Legends</option>
+                                    <option value="tft">Teamfight Tactics</option>
+                                    <option value="wildrift">Wild Rift</option>
+                                    <option value="valorant">VALORANT</option>
+                                    <option value="lor">Legends of Runeterra</option>
+                                </select>
+
+                            </div>
+                            <div class="select">
+                                <label for="tenor_tag">Topic: </label>
+                                <select id="tenor_tag" name="tenor_tag">
+                                    <option value="" selected disabled>-- Topic --</option>
+                                    <option value="meme">Meme</option>
+                                    <option value="question">Question</option>
+                                    <option value="discussion">Discussion</option>
+                                    <option value="theory">Theory & Lore</option>
+                                    <option value="guides">Guides & Tips</option>
+                                    <option value="cosplay">Cosplay</option>
+                                    <option value="fanart">Fan Art</option>
+                                    <option value="news">News</option>
+                                </select>
+
+                            </div>
+
+
+                        </section>
                         <label for='title'>Title</label>
                         <input placeholder="Title" type='text' id='title' name='title'/>
                         <label for='writer'>Content</label>
@@ -34,7 +65,26 @@
 
                 $('#title').on("keyup", function () {
 
-                    if ($('#title').val() === '') {
+                    if ($('#title').val() === '' || $('#game_tag').val() === '' || $('#tenor_tag').val() === '') {
+                        $(".submit").prop('disabled', true);
+                    } else {
+                        $(".submit").prop('disabled', false);
+                    }
+                });
+
+                $('#game_tag').on("change", function () {
+
+                    if ($('#title').val() === '' || $('#game_tag').val() === '' || $('#tenor_tag').val() === '') {
+                        $(".submit").prop('disabled', true);
+                    } else {
+                        $(".submit").prop('disabled', false);
+                    }
+                })
+                ;
+
+                $('#tenor_tag').on("change", function () {
+
+                    if ($('#title').val() === '' || $('#game').val() === '' || $('#tenor_tag').val() === '') {
                         $(".submit").prop('disabled', true);
                     } else {
                         $(".submit").prop('disabled', false);

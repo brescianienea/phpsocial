@@ -20,7 +20,6 @@ body {
 
 
   main {
-    overflow-x: hidden;
     padding: 15px 0;
     flex: 1;
 
@@ -208,22 +207,8 @@ body {
           }
         }
 
+
         &:nth-child(3) {
-
-          border-color: #f5bccf;
-
-          svg {
-            path {
-              fill: #e1306c;
-            }
-          }
-
-          &:hover {
-            background: #e1306c;
-          }
-        }
-
-        &:nth-child(4) {
           border-color: #bef4d2;
 
           svg {
@@ -237,7 +222,7 @@ body {
           }
         }
 
-        &:nth-child(5) {
+        &:nth-child(4) {
           border-color: #b3e6ff;
 
           svg {

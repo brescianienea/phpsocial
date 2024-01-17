@@ -31,6 +31,13 @@ if (!$_GET['section']) {
                             </li>
                         </ul>
                     </section>
+                    <?php if ($_GET['section'] == "chats"): ?>
+                        <?php include('social/chat.php'); ?>
+                    <?php elseif ($_GET['section'] == "requests"): ?>
+                        <?php include('social/requests.php'); ?>
+                    <?php elseif ($_GET['section'] == "notifications"): ?>
+                        <?php include('social/notifications.php'); ?>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>

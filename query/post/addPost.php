@@ -19,14 +19,14 @@ function addPost($db, $userData)
     $member_id = $_SESSION['user_id'];
     $content = $userData['content'];
     $datetime_posted = date('Y-m-d H:i:s', $timestamp);
-
+    $title = $userData['title'];
     $tenor_tag = isset($userData['tenor_tag']) ? $userData['tenor_tag'] : '';
     $game_tag = isset($userData['game_tag']) ? $userData['game_tag'] : '';
     $response = [];
 
     try {
         if (!empty($member_id) && !empty($content) && !empty($datetime_posted)) {
-            $query = "INSERT INTO `post` (`member_id`, `content`, `datetime_posted`, `tenor_tag`, `game_tag`) VALUES ('$member_id', '$content', '" . $datetime_posted . "', '$tenor_tag', '$game_tag')";
+            $query = "INSERT INTO `post` (`member_id`,`title`, `content`, `datetime_posted`, `tenor_tag`, `game_tag`) VALUES ('$member_id', '$title' ,'$content', '" . $datetime_posted . "', '$tenor_tag', '$game_tag')";
             $db->query($query);
             $response['message'] = "success";
             //$response = array_merge($response, $result->fetch_array(MYSQLI_BOTH));

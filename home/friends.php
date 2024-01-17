@@ -5,7 +5,7 @@ $friedsIDs = User::getFriendsByID($_SESSION['user_id']);
 ?>
 
 
-<?php if (!is_array($friedsIDs)): ?>
+<?php if (!is_array($friedsIDs) || count($friedsIDs) == 0): ?>
     <section class="centered">
         <article>
             <?php include('source/icons/circle-exclamation-solid.svg'); ?>
@@ -15,7 +15,7 @@ $friedsIDs = User::getFriendsByID($_SESSION['user_id']);
     </section>
 <?php else: ?>
     <section class="post-wrapper">
-        <?php $postList = Post::getPostsByID($_SESSION['user_id']); ?>
+        <?php $postList = Post::getPostsByMultipleIDs($friedsIDs); ?>
 
         <?php if (is_array($postList)): ?>
             <ul class="post-list">
@@ -26,7 +26,7 @@ $friedsIDs = User::getFriendsByID($_SESSION['user_id']);
                             <span>Posted by <a><?= User::getUsernameByID($post['member_id'])['username'] ?> </a></span>
                         </section>
                         <h2><?= $post['title'] ?></h2>
-                        <button><?php include ('source/icons/share-nodes-solid.svg') ?></button>
+                        <button><?php include('source/icons/share-nodes-solid.svg') ?></button>
 
                     </li>
                 <?php endforeach; ?>

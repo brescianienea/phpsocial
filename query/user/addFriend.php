@@ -11,9 +11,10 @@ $db = $conn;
 $userData = $_POST;
 addFriend($db, $userData);
 
-function addFriend($db, $userData) {
-    $my_id = $userData['my_id'];
-    $friends_id = $userData['friends_id'];
+function addFriend($db, $userData)
+{
+    $my_id = $_SESSION['user_id'];
+    $friends_id = $userData['user_id'];
     $response = [];
 
     try {

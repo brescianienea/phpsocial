@@ -1,5 +1,7 @@
 <?php
-class User {
+
+class User
+{
     static function getUserInfoByID($userData)
     {
         try {
@@ -22,7 +24,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -53,7 +55,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -91,7 +93,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -122,7 +124,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -170,7 +172,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -201,7 +203,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -232,7 +234,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -263,7 +265,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -301,7 +303,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -334,7 +336,7 @@ class User {
                 } else {
                     return null;
                 }
-    
+
             } else {
                 return null;
             }
@@ -355,10 +357,12 @@ class User {
             $db = $conn;
             $sender = $userData;
             $response = [];
+            $friends = [];
             if (!empty($sender)) {
                 $query = "SELECT receiver FROM friend_requests";
                 $query .= " WHERE sender = " . $sender;
                 $result = $db->query($query);
+
                 if ($result->num_rows > 0) {
                     //$result = $result->fetch_assoc();
                     $friends = [];
@@ -373,7 +377,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -412,7 +416,7 @@ class User {
                 } else {
                     return [];
                 }
-    
+
             } else {
                 return [];
             }
@@ -441,11 +445,11 @@ class User {
                     $result = $result->fetch_assoc();
                     return $result;
                 } else {
-                    return null;
+                    return $response;
                 }
-    
+
             } else {
-                return null;
+                return $response;
             }
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";

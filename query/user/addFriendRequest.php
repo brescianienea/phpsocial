@@ -11,13 +11,13 @@ $db = $conn;
 $userData = $_POST;
 addFriendRequest($db, $userData);
 
-function addFriendRequest($db, $userData) {
-    $sender = $userData['sender'];
-    $receiver = $userData['receiver'];
+function addFriendRequest($db, $userData)
+{
+    $sender = $_SESSION['user_id'];
+    $receiver = $userData['user_id'];
     $response = [];
-
     try {
-        if (!empty($sender) && !empty($content)) {
+        if (!empty($sender) && !empty($receiver)) {
             $query = "SELECT sender FROM friend_requests";
             $query .= " WHERE receiver = '$sender'";
             $result = $db->query($query);

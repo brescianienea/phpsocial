@@ -13,7 +13,6 @@ $notifications = Notification::getNotificationsByID($_SESSION['user_id']);
         <li><a href="new-post.php?" class="<?php if ($_SESSION['page'] == 'new-post'): ?> _selected <?php endif; ?>">
                 <?php include('source/icons/square-plus-solid.svg'); ?>
                 New Post</a></li>
-        <?= var_dump($notifications) ?>
         <li><a href="social.php?" class="<?php if ($_SESSION['page'] == 'social'): ?> _selected <?php endif; ?>
                                          <?php if ($notifications['friendreq_notification'] > 0 || $notifications['chat_notification'] > 0): ?> notify <?php endif; ?> ">
                 <?php include('source/icons/comments-solid.svg'); ?>

@@ -12,7 +12,7 @@ $db = $conn;
 $userData = $_POST;
 addNotification($db, $userData);
 
-function addNotification($db, $userData)
+function addNotification($db, $userData, $reset = false)
 {
     $user_id = $_SESSION['user_id'];
     $friendreq_notification = $userData['friendreq_notification'];
@@ -21,8 +21,32 @@ function addNotification($db, $userData)
 
     try {
         if (!empty($user_id) && !empty($friendreq_notification) && !empty($chat_notification)) {
-            $query = "INSERT INTO `notifications` (`user_id`, `friendreq_notification`, `chat_notification`) VALUES ('$user_id', '$friendreq_notification', '$chat_notification')";
-            $db->query($query);
+            if(!$reset) {
+                $query = "SELECT friendreq_notification, chat_notification FROM notifications";
+                $query .= " WHERE user_id = " . $userID;
+                $result = $db->query($query);
+                if ($result->num_rows > 0) {
+                    $result = $result->fetch_assoc();
+                    return $result;
+                }
+                $fr = $result['friendreq_notification'] + $friendreq_notification;
+                $cn = $result['chat_notification'] + $chat_notification;
+                $query = "INSERT INTO `notifications` (`user_id`, `friendreq_notification`, `chat_notification`) VALUES ('$user_id', '$fr', '$cn')";
+                $db->query($query);
+            } else {
+                if($friendreq_notification == 1) {
+                    $friendreq_notification = 0;
+                    $query = "INSERT INTO `notifications` (`user_id`, `friendreq_notification`) VALUES ('$user_id', '$friendreq_notification')";
+                    $db->query($query);
+                }
+                if($chat_notification == 1) {
+                    $chat_notification = 0;
+                    $query = "INSERT INTO `notifications` (`user_id`, `chat_notification`) VALUES ('$user_id', '$chat_notification')";
+                    $db->query($query);
+                }
+                
+            }
+            
             $response['message'] = "success";
         } else {
             $response['message'] = "Some required fields are empty";

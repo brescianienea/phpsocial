@@ -64,7 +64,8 @@ function registerUser($db, $userData)
                                 $memberID = $resultArr['user_id'];
                                 $dateFinal = date("Y-m-d", strtotime($year . '-' . $month . '-' . $day));
                                 $query = "INSERT INTO `members` (`member_id`, `email`, `birthdate`) VALUES ('$memberID', '$mail', '$dateFinal')";
-
+                                $db->query($query);
+                                $query = "INSERT INTO `notifications` (`user_id`, `friendreq_notification`, `chat_notification`) VALUES ('$memberID', 0, 0)";
                                 $db->query($query);
                                 $response['message'] = "success";
                             }

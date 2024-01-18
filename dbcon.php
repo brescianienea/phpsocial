@@ -2,7 +2,7 @@
 
 // $conn = new PDO('mysql:host=localhost;dbname=socialdb', 'root', '');
 
-$hostname = "localhost:3307";
+$hostname = "localhost";
 $username = "root";
 $password = "";
 $databaseName = "socialdb";

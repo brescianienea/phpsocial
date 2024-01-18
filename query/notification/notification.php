@@ -108,7 +108,7 @@ class Notification {
         }
     }
 
-    static function addNotification($user_id, $friendreq_notification, $chat_notification) {
+    static function addNotification($user_id, $friendreq_notification, $chat_notification, $reset = false) {
     try {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -124,16 +124,14 @@ class Notification {
         if (!empty($user_id) && !empty($friendreq_notification) && !empty($chat_notification)) {
             if(!$reset) {
                 $query = "SELECT friendreq_notification, chat_notification FROM notifications";
-                $query .= " WHERE user_id = " . $userID;
+                $query .= " WHERE user_id = " . $user_id;
                 $result = $db->query($query);
                 if ($result->num_rows > 0) {
-                    $result = $result->fetch_assoc();
-                    return $result;
+                    $fr = $result['friendreq_notification'] + $friendreq_notification;
+                    $cn = $result['chat_notification'] + $chat_notification;
+                    $query = "INSERT INTO `notifications` (`user_id`, `friendreq_notification`, `chat_notification`) VALUES ('$user_id', '$fr', '$cn')";
+                    $db->query($query);
                 }
-                $fr = $result['friendreq_notification'] + $friendreq_notification;
-                $cn = $result['chat_notification'] + $chat_notification;
-                $query = "INSERT INTO `notifications` (`user_id`, `friendreq_notification`, `chat_notification`) VALUES ('$user_id', '$fr', '$cn')";
-                $db->query($query);
             } else {
                 if($friendreq_notification == 1) {
                     $friendreq_notification = 0;
@@ -153,7 +151,7 @@ class Notification {
     }
     }
 
-    static function addChatNotification($receiver_id, $sender_id, $unread) {
+    static function addChatNotification($receiver_id, $sender_id, $unread, $reset = false) {
         try {
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();

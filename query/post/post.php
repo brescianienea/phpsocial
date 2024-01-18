@@ -73,7 +73,7 @@ class Post
             $response = [];
             if (!empty($userID)) {
                 $posts = [];
-                $users = "WHERE member_id IN (" . implode(', ', $userID) . ")";
+                $users = " WHERE member_id IN (" . implode(', ', $userID) . ")";
                 if ($users != "") {
                     $query = "";
                     if ($sorting == "popularity") {

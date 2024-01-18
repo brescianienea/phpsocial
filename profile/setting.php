@@ -7,24 +7,4 @@
     </li>
 </ul>
 
-
-<script>
-    $(document).ready(function () {
-        $('#logout').click(function () {
-            $.ajax({
-                method: "POST",
-                url: "/query/profile/logout.php",
-                success: function (data) {
-                    if (data === 'success') {
-                        window.location.href = "index.php";
-                    }
-
-
-                }
-
-            });
-        });
-    });
-
-
-</script>
+<script type="text/javascript" src="../js/profile/setting.js"></script>

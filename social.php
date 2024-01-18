@@ -3,6 +3,7 @@ if (!$_GET['section']) {
     header("Location: /social.php?section=chats");
     exit();
 }
+require_once('query/notification/notification.php');
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -10,6 +11,7 @@ if (!$_GET['section']) {
     <?php $_SESSION['page'] = 'social' ?>
     <body>
     <?php include('header.php'); ?>
+    <?php $notifications = Notification::getNotificationsByID($_SESSION['user_id']); ?>
     </header>
     <main>
         <div class="column">
@@ -20,10 +22,14 @@ if (!$_GET['section']) {
                     <section class="section-selection">
                         <ul>
                             <li class="<?php if ($_GET['section'] == "chats"): ?> _selected <?php endif; ?>">
-                                <a href="/social.php?section=chats">Chats</a>
+                                <a href="/social.php?section=chats"
+                                   class="<?php if ($notifications['chat_notification'] > 0): ?> notify <?php endif; ?>">Chats</a>
                             </li>
                             <li class="<?php if ($_GET['section'] == "requests"): ?> _selected <?php endif; ?>">
-                                <a href="/social.php?section=requests">Friend requests</a>
+                                <a
+                                        href="/social.php?section=requests"
+                                        class="<?php if ($notifications['friendreq_notification'] > 0): ?> notify <?php endif; ?>">Friend
+                                    requests</a>
                             </li>
                         </ul>
                     </section>

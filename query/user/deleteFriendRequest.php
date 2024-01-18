@@ -5,6 +5,8 @@ if (session_status() == PHP_SESSION_NONE) {
 $ds = DIRECTORY_SEPARATOR;
 $base_dir = realpath(dirname(__FILE__) . $ds . '..' . $ds . '..') . $ds;
 require_once("{$base_dir}dbcon.php");
+require_once("{$base_dir}query/notification/notification.php")
+
 ?>
 <?php
 $db = $conn;
@@ -34,6 +36,12 @@ function addFriend($db, $userData)
                 $db->query($query);
                 $response['message'] = "success";
                 //$response = array_merge($response, $result->fetch_array(MYSQLI_BOTH));
+                $notification['user_id'] = $receiver;
+                $notification['friendreq_notification'] = -1;
+                $notification['chat_notification'] = 0;
+                Notification::addNotification($notification['user_id'], $notification['friendreq_notification'], $notification['chat_notification']);
+
+
             } else {
                 $response['message'] = "Friend request doesn't exist.";
             }

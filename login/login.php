@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="bottom-links">
-                    <p><a href="/login-page.php?section=recover">Can't sign in?</a></p>
+                    <p hidden="hidden"><a href="/login-page.php?section=recover">Can't sign in?</a></p>
                     <p><a href="/login-page.php?section=register">Create account</a></p>
                 </div>
             </form>

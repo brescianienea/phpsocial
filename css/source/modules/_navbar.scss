@@ -5,7 +5,6 @@ nav {
   bottom: 0;
   border-top: 2px solid $border-color__dark;
   z-index: 9999;
-  margin: 5px;
   @media screen and (min-width: $screen-m) {
     height: fit-content;
     border-radius: 15px;

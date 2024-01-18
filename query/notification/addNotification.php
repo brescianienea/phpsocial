@@ -14,7 +14,7 @@ addNotification($db, $userData);
 
 function addNotification($db, $userData, $reset = false)
 {
-    $user_id = $_SESSION['user_id'];
+    $user_id = $userData['user_id'];
     $friendreq_notification = $userData['friendreq_notification'];
     $chat_notification = $userData['chat_notification'];
     $response = [];

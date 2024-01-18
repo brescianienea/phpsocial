@@ -1,4 +1,7 @@
-<?php include('query/user/user.php'); ?>
+<?php include('query/user/user.php');
+require_once('query/notification/notification.php');
+Notification::addNotification($_SESSION['user_id'], 1, 0, true);
+?>
 <h1 hidden="hidden">Friend Requests</h1>
 <section class="requests-container">
     <?php

@@ -384,6 +384,11 @@ body input:-webkit-autofill:active {
   fill: #ababab;
 }
 
+.section-selection ul li a:after {
+  top: 0;
+  right: 0;
+}
+
 @media screen and (max-width: 375px) {
   .section-selection ul li a svg {
     display: block;
@@ -413,6 +418,21 @@ body input:-webkit-autofill:active {
 
 .desktop-only {
   display: none;
+}
+
+.notify {
+  position: relative;
+}
+
+.notify:after {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  content: ' ';
+  height: 10px;
+  width: 10px;
+  background-color: #d53235;
+  border-radius: 50%;
 }
 
 @media screen and (min-width: 768px) {
@@ -452,7 +472,6 @@ nav {
   bottom: 0;
   border-top: 2px solid rgba(51, 51, 51, 0.25);
   z-index: 9999;
-  margin: 5px;
 }
 
 @media screen and (min-width: 768px) {
@@ -1498,7 +1517,6 @@ footer section .row p {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-top: auto;
   row-gap: 30px;
 }
 
@@ -1507,6 +1525,10 @@ footer section .row p {
   flex-direction: column-reverse;
   flex: 1;
   row-gap: 10px;
+  overflow-y: scroll;
+  height: 50vh;
+  max-height: 50vh;
+  min-height: 50vh;
 }
 
 .chat .chat .message-wrapper .message {
@@ -1548,6 +1570,7 @@ footer section .row p {
   color: #fff;
   border: none;
   padding: 10px;
+  font-family: "Mark Pro", Arial, sans-serif;
 }
 
 .chat .chat form button {
@@ -1563,4 +1586,31 @@ footer section .row p {
 
 .chat .chat form button:hover {
   background-color: #bf2224;
+}
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-list div {
+  background-color: #2d2d2d;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+}
+
+.chat-list div a {
+  display: flex;
+  column-gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.chat-list div a img {
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  outline: 2px solid #fff;
 }

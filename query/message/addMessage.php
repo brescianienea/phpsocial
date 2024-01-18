@@ -5,6 +5,8 @@ if (session_status() == PHP_SESSION_NONE) {
 $ds = DIRECTORY_SEPARATOR;
 $base_dir = realpath(dirname(__FILE__) . $ds . '..' . $ds . '..') . $ds;
 require_once("{$base_dir}dbcon.php");
+require_once("{$base_dir}query/notification/notification.php")
+
 ?>
 <?php
 require_once("../user/user.php");
@@ -26,6 +28,11 @@ function addMessage($db, $userData)
             $query = "INSERT INTO `message` (`sender_id`, `receiver_id`, `content`, `datetime_sent`) VALUES ('$sender_id', '$receiver_id', '$content', '$datetime_sent')";
             $db->query($query);
             $response['message'] = "success";
+            $notification['user_id'] = $receiver_id;
+            $notification['friendreq_notification'] = 0;
+            $notification['chat_notification'] = 1;
+            Notification::addNotification($notification['user_id'], $notification['friendreq_notification'], $notification['chat_notification']);
+
         } else {
             $response['message'] = "Some required fields are empty";
         }

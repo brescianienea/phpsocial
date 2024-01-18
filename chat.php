@@ -56,7 +56,6 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
         <script>
             $('#submit').on('click', function (e) {
                 e.preventDefault();
-                console.log('lol')
                 $(this).closest('form')
                 {
                     $.ajax({

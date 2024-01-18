@@ -19,7 +19,6 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: auto;
     row-gap: 30px;
 
     .message-wrapper {
@@ -27,6 +26,10 @@
       flex-direction: column-reverse;
       flex: 1;
       row-gap: 10px;
+      overflow-y: scroll;
+      height: 50vh;
+      max-height: 50vh;
+      min-height: 50vh;
 
       .message {
         display: flex;
@@ -72,6 +75,7 @@
         color: $font-color;
         border: none;
         padding: 10px;
+        font-family: $font-family__normal;
       }
 
       button {
@@ -95,4 +99,32 @@
   }
 
 
+}
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+
+
+  div {
+    background-color: $background-color__light;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+
+    a {
+      display: flex;
+      column-gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+
+      img {
+        height: 70px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        outline: 2px solid #fff;
+      }
+    }
+  }
 }

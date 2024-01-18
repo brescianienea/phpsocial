@@ -172,6 +172,28 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
                 });
 
                 $('#revoke_friendship').on('click', function () {
+                    $(this).closest('form')
+                    {
+                        $.ajax({
+
+                            method: "POST",
+                            url: "/query/user/deleteFriend.php",
+                            data: $('form').serialize(),
+                            success: function (data) {
+                                console.log(data);
+                                let result = JSON.parse(data);
+                                if (result['message'] === 'success') {
+
+                                } else {
+                                    alert(result['message']);
+                                }
+
+
+                            }
+
+                        });
+                    }
+                    
                     location.reload();
                 });
 

@@ -1,5 +1,6 @@
 <footer>
     <section>
+        <h2 hidden = "hidden">Footer<h2>
         <div class="row">
             <p class="">© 2024 Enea Bresciani, Federico Tamburini</p>
         </div>

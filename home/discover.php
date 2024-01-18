@@ -12,6 +12,7 @@ if (!isset($_GET['game_tag'])) {
 ?>
 
 <section class="filters">
+    <h2 hidden = "hidden">Filter by:<h2>
     <div class="select">
         <label for="game_tag">Game: </label>
         <select id="game_tag" name="game_tag" onchange="redirect();">

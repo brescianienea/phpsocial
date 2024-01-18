@@ -9,7 +9,7 @@ require_once("{$base_dir}dbcon.php");
 <?php
 $db = $conn;
 $userData = $_POST;
-addFriend($db, $userData);
+deleteFriend($db, $userData);
 
 function deleteFriend($db, $userData) {
 

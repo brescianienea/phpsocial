@@ -26,22 +26,31 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
                         <p>Share this link via</p>
                         <ul class="icons">
                             <li>
-                                <a href="#"><?php include('source/icons/facebook.svg') ?></a>
+                                <a class="share-facebook"
+                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                   href=""><?php include('source/icons/facebook.svg') ?></a>
                             </li>
                             <li>
-                                <a href="#"><?php include('source/icons/x-twitter.svg') ?></i></a>
+                                <a class="share-twitter"
+                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                   href="#"><?php include('source/icons/x-twitter.svg') ?></i></a>
                             </li>
                             <li>
-                                <a href="#"><?php include('source/icons/whatsapp.svg') ?></i></a>
+                                <a class="share-whatsapp"
+                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                   href="#"><?php include('source/icons/whatsapp.svg') ?></i></a>
                             </li>
                             <li>
-                                <a href="#"><?php include('source/icons/telegram.svg') ?></a>
+                                <a class="share-telegram"
+                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                   href="#"><?php include('source/icons/telegram.svg') ?></a>
                             </li>
                         </ul>
                         <p>Or copy link</p>
                         <div class="field">
                             <?php include('source/icons/link-solid.svg') ?>
-                            <input type="text" readonly value="https://codepen.io/coding_dev_">
+                            <input type="text" readonly
+                                   value="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>">
                             <button>Copy</button>
                         </div>
                     </div>
@@ -193,7 +202,7 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
 
                         });
                     }
-                    
+
                     location.reload();
                 });
 

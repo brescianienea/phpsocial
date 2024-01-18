@@ -37,7 +37,8 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
             <p>Or copy link</p>
             <div class="field">
                 <?php include('source/icons/link-solid.svg') ?>
-                <input type="text" readonly
+                <label hidden="hidden" for="popup-link">copy</label>
+                <input id="popup-link" type="text" readonly
                        value="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>">
                 <button>Copy</button>
             </div>

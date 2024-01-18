@@ -3,7 +3,7 @@
 <?php
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xml:lang="en">
 <?php include('head.php'); ?>
 <?php $_SESSION['page'] = 'profile' ?>
 <?php if ($_SESSION['logged'] == 'true'): ?>

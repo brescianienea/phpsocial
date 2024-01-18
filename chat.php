@@ -41,8 +41,8 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
                 </div>
 
                 <form>
-                    <label hidden="hidden" for="message-text"></label>
-                    <label hidden="hidden" for="receiver_id"></label>
+                    <label hidden="hidden" for="message-text">message</label>
+                    <label hidden="hidden" for="receiver_id">receiver id</label>
                     <input type="text" hidden="hidden" name="receiver_id" id="receiver_id"
                            value="<?= $_GET['user_id'] ?>">
                     <textarea name="message-text" id="message-text" placeholder="Type..."></textarea>

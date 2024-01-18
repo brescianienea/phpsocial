@@ -6,7 +6,7 @@ if (!$_GET['section']) {
 require_once('query/notification/notification.php');
 ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="en" xml:lang="en">
     <?php include('head.php'); ?>
     <?php $_SESSION['page'] = 'social' ?>
     <body>

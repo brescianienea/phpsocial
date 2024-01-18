@@ -75,6 +75,13 @@ if (!isset($_GET['game_tag'])) {
 
 </section>
 <section class="post-wrapper">
+    <?php if (!isset($_GET['tenor_tag'])) {
+        $_GET['tenor_tag'] = '';
+    }
+    if (!isset($_GET['game_tag'])) {
+        $_GET['game_tag'] = '';
+    }
+    ?>
     <?php $postList = Post::getAllPosts($_GET['tenor_tag'], $_GET['game_tag']); ?>
 
     <?php if (is_array($postList)): ?>

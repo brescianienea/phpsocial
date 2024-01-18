@@ -14,16 +14,16 @@ addMessage($db, $userData);
 
 function addMessage($db, $userData)
 {
-    $message_id = $_SESSION['message_id'];
-    $sender_id = $userData['sender_id'];
+    $dateTime = date('m/d/Y h:i:s a');
+    $timestamp = strtotime($dateTime);
+    $sender_id = $_SESSION['user_id'];
     $receiver_id = $userData['receiver_id'];
-    $content = $userData['content'];
-    $datetime_sent = $userData['datetime_sent'];
+    $content = $userData['message-text'];
+    $datetime_sent = date('Y-m-d H:i:s', $timestamp);;
     $response = [];
-
     try {
-        if (!empty($message_id) && !empty($sender_id) && !empty($receiver_id) && !empty($content) && !empty($datetime_sent)) {
-            $query = "INSERT INTO `comments` (`message_id`, `sender_id`, `receiver_id`, `content`, `datetime_sent`) VALUES ('$message_id', '$sender_id', '$receiver_id', '$content', '$datetime_sent')";
+        if (!empty($sender_id) && !empty($receiver_id) && !empty($content) && !empty($datetime_sent)) {
+            $query = "INSERT INTO `message` (`sender_id`, `receiver_id`, `content`, `datetime_sent`) VALUES ('$sender_id', '$receiver_id', '$content', '$datetime_sent')";
             $db->query($query);
             $response['message'] = "success";
         } else {

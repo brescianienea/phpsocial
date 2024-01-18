@@ -5,20 +5,39 @@ nav {
   bottom: 0;
   border-top: 2px solid $border-color__dark;
   z-index: 9999;
+  margin: 5px;
+  @media screen and (min-width: $screen-m) {
+    height: fit-content;
+    border-radius: 15px;
+  }
 
   ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: space-around;
+    @media screen and (min-width: $screen-m) {
+      flex-direction: column;
+      row-gap: 30px;
+
+    }
 
     li {
+      @media screen and (min-width: $screen-m) {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
       a {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 5px;
         color: $icon-color;
+        @media screen and (min-width: $screen-m) {
+          flex-direction: row;
+        }
 
         svg {
           height: 1.5rem;
@@ -44,4 +63,10 @@ nav {
       }
     }
   }
+
+  @media screen and (min-width: $screen-m) {
+    position: relative;
+    flex: 1;
+  }
+
 }

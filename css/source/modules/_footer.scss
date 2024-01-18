@@ -9,6 +9,9 @@ footer {
     gap: 5px;
     border-bottom: 2px solid $border-color__dark;
     border-top: 2px solid $border-color__dark;
+    @media screen and (min-width: $screen-m) {
+      margin-bottom: 0;
+    }
 
     .row {
       display: flex;

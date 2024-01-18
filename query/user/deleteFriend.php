@@ -9,11 +9,12 @@ require_once("{$base_dir}dbcon.php");
 <?php
 $db = $conn;
 $userData = $_POST;
-deleteFriend($db, $userData);
+addFriend($db, $userData);
 
 function deleteFriend($db, $userData) {
-    $my_id = $userData['my_id'];
-    $friends_id = $userData['friends_id'];
+
+    $my_id = $_SESSION['user_id'];
+    $friends_id = $userData['user_id'];
     $response = [];
 
     try {

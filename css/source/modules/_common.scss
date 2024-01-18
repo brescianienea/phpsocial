@@ -22,11 +22,22 @@ body {
   main {
     padding: 15px 0;
     flex: 1;
+    @media screen and (min-width: $screen-m) {
+      display: flex;
+      flex-direction: row-reverse;
+      column-gap: 20px;
+      margin: 0 auto;
+      max-width: 1328px;
+      width: calc(100vw - var(--scrollbarWidth));
+    }
 
     .column {
       max-width: 1328px;
       margin: 0 auto;
       height: 100%;
+      @media screen and (min-width: $screen-m) {
+        flex: 3;
+      }
 
       .wrapper {
         margin: 0 5px;

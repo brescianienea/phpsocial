@@ -33,8 +33,6 @@ if (!$_GET['section']) {
                     <?php include('home/friends.php'); ?>
                 <?php elseif ($_GET['section'] == "discover"): ?>
                     <?php include('home/discover.php'); ?>
-                <?php elseif ($_GET['section'] == "news"): ?>
-                    <?php include('home/news.php'); ?>
                 <?php endif; ?>
             </div>
         </div>

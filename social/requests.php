@@ -4,6 +4,7 @@ Notification::addNotification($_SESSION['user_id'], 1, 0, true);
 ?>
 <h1 hidden="hidden">Friend Requests</h1>
 <section class="requests-container">
+<h2 hidden = "hidden">container</h2>
     <?php
     $received = User::getFriendRequestReceived($_SESSION['user_id']);
     if (is_array($received) && count($received) > 0): ?>
@@ -37,4 +38,4 @@ Notification::addNotification($_SESSION['user_id'], 1, 0, true);
         No friend requests at the moment...
     <?php endif; ?>
 </section>
-<script type="text/javascript" src="../js/social/requests.js"></script>
+<script src="../js/social/requests.js"></script>

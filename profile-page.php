@@ -22,6 +22,7 @@
         <div class="column">
             <div class="wrapper">
                 <section class="section-selection">
+                    <h2 hidden = "hidden">Sections</h2>
                     <ul>
                         <li class="<?php if ($_GET['section'] == "profile"): ?> _selected <?php endif; ?>">
                             <a href="/profile-page.php?section=profile">Your Profile</a>

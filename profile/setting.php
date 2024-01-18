@@ -7,4 +7,4 @@
     </li>
 </ul>
 
-<script type="text/javascript" src="../js/profile/setting.js"></script>
+<script src="../js/profile/setting.js"></script>

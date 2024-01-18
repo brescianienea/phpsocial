@@ -108,5 +108,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="../js/login/register.js"></script>
+<script src="../js/login/register.js"></script>
 

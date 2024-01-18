@@ -16,6 +16,7 @@
                     <h1>New Post</h1>
                     <form class="new-post">
                         <section class="tags">
+                            <h2 hidden = "hidden">Tags:</h2>
                             <div class="select">
                                 <label for="game_tag">Game: </label>
                                 <select id="game_tag" name="game_tag">
@@ -57,7 +58,7 @@
 
                 <?php endif; ?>
             </div>
-            <script type="text/javascript" src="js/new-post.js"></script>
+            <script src="js/new-post.js"></script>
         </div>
         <?php include('navbar.php'); ?>
     </main>

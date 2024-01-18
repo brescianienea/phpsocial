@@ -20,6 +20,7 @@ require_once('query/notification/notification.php');
                     <?php include('login-required.php'); ?>
                 <?php else: ?>
                     <section class="section-selection">
+                        <h2 hidden = "hidden">sections</h2>
                         <ul>
                             <li class="<?php if ($_GET['section'] == "chats"): ?> _selected <?php endif; ?>">
                                 <a href="/social.php?section=chats"

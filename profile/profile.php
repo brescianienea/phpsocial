@@ -15,22 +15,22 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
             <ul class="icons">
                 <li>
                     <a class="share-facebook"
-                       url="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>"
+                    data-url="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>"
                        href=""><?php include('source/icons/facebook.svg') ?></a>
                 </li>
                 <li>
                     <a class="share-twitter"
-                       url="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>"
+                    data-url="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>"
                        href="#"><?php include('source/icons/x-twitter.svg') ?></i></a>
                 </li>
                 <li>
                     <a class="share-whatsapp"
-                       url="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>"
+                    data-url="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>"
                        href="#"><?php include('source/icons/whatsapp.svg') ?></i></a>
                 </li>
                 <li>
                     <a class="share-telegram"
-                       url="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>"
+                    data-url="https://<?= $_SERVER['HTTP_HOST'] . '/user.php?user_id=' . $_SESSION['user_id'] ?>"
                        href="#"><?php include('source/icons/telegram.svg') ?></a>
                 </li>
             </ul>
@@ -45,6 +45,7 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
     </div>
 
     <section class="profile-title">
+    <h2 hidden = "hidden">image</h2>
         <img alt="Profile Image" src="../source/images/profile/placeholder.webp">
         <h1><?= $username ?></h1>
         <a id="share-profile">
@@ -52,6 +53,7 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
         </a>
     </section>
     <section class="post-wrapper">
+    <h2 hidden = "hidden">wrapper</h2>
         <?php $postList = Post::getPostsByID($_SESSION['user_id']); ?>
 
         <?php if (is_array($postList)): ?>
@@ -61,6 +63,7 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
 
                         <section
                         >
+                        <h2 hidden = "hidden">icon</h2>
                             <div class="game-icon <?= $post['game_tag'] ?>">
                                 <?php include('source/icons/' . $post['game_tag'] . '.svg') ?>
                             </div>
@@ -88,4 +91,4 @@ $username = User::getUsernameByID($_SESSION['user_id'])['username'];
 
 
 </div>
-<script type="text/javascript" src="../js/profile/profile.js"></script>
+<script src="../js/profile/profile.js"></script>

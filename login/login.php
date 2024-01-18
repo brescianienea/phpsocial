@@ -40,4 +40,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="../js/login/login.js"></script>
+<script src="../js/login/login.js"></script>

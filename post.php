@@ -23,22 +23,22 @@ $post = Post::getPostsByPostID($_GET['post_id'])[0];
                         <ul class="icons">
                             <li>
                                 <a class="share-facebook"
-                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                   data-url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
                                    href=""><?php include('source/icons/facebook.svg') ?></a>
                             </li>
                             <li>
                                 <a class="share-twitter"
-                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                data-url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
                                    href="#"><?php include('source/icons/x-twitter.svg') ?></i></a>
                             </li>
                             <li>
                                 <a class="share-whatsapp"
-                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                data-url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
                                    href="#"><?php include('source/icons/whatsapp.svg') ?></i></a>
                             </li>
                             <li>
                                 <a class="share-telegram"
-                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                data-url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
                                    href="#"><?php include('source/icons/telegram.svg') ?></a>
                             </li>
                         </ul>
@@ -80,6 +80,7 @@ $post = Post::getPostsByPostID($_GET['post_id'])[0];
                         <?php if (is_array($comments)): ?>
                             <?php foreach ($comments as $comment): ?>
                                 <section class="comment">
+                                    <h3 hidden = "hidden">Comment</h3>
                                     <span><a href="/user.php?user_id=<?= $comment['user_id'] ?> "><?= User::getUsernameByID($comment['user_id'])['username'] ?></a></span>
                                     <span><?= $comment['content'] ?></span>
                                 </section>

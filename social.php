@@ -25,18 +25,12 @@ if (!$_GET['section']) {
                             <li class="<?php if ($_GET['section'] == "requests"): ?> _selected <?php endif; ?>">
                                 <a href="/social.php?section=requests">Friend requests</a>
                             </li>
-                            <li class="<?php if ($_GET['section'] == "notifications"): ?> _selected <?php endif; ?>">
-                                <a href="/social.php?section=notifications"><span>Notifications</span><?php include('source/icons/bell-solid.svg') ?>
-                                </a>
-                            </li>
                         </ul>
                     </section>
                     <?php if ($_GET['section'] == "chats"): ?>
                         <?php include('social/chat.php'); ?>
                     <?php elseif ($_GET['section'] == "requests"): ?>
                         <?php include('social/requests.php'); ?>
-                    <?php elseif ($_GET['section'] == "notifications"): ?>
-                        <?php include('social/notifications.php'); ?>
                     <?php endif; ?>
                 <?php endif; ?>
             </div>

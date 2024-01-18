@@ -73,22 +73,15 @@ class Post
             $response = [];
             if (!empty($userID)) {
                 $posts = [];
-                $users = "";
-                foreach ($userID as $ID) {
-                    if ($users == "") {
-                        $users = " WHERE member_id = " . $ID;
-                    } else {
-                        $users .= " OR member_id = " . $ID;
-                    }
-                }
+                $users = "WHERE member_id IN (" . implode(', ', $userID) . ")";
                 if ($users != "") {
                     $query = "";
                     if ($sorting == "popularity") {
                         $query = "SELECT post.*, COUNT(post_id) AS likeNum FROM post LEFT JOIN likes ON post.post_id=likes.post_id";
-                        $query .= " WHERE member_id = " . $userID;
+                        $query .= $users;
                     } else {
                         $query = "SELECT * FROM post";
-                        $query .= " WHERE member_id = " . $userID;
+                        $query .= $users;
                     }
                     if ($tenorTag != null) {
                         $query .= " AND tenor_tag = '" . $tenorTag . "'";

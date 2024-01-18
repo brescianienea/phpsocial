@@ -2,7 +2,12 @@
 require_once('query/notification/notification.php');
 $current_url = explode("?", $_SERVER['REQUEST_URI']);
 $current_url = $current_url[0];
-$notifications = Notification::getNotificationsByID($_SESSION['user_id']);
+$notifications = '';
+if ($_SESSION['logged'] == 'true') {
+    $notifications = Notification::getNotificationsByID($_SESSION['user_id']);
+
+}
+
 
 ?>
 <nav class="" role="navigation">
@@ -14,7 +19,8 @@ $notifications = Notification::getNotificationsByID($_SESSION['user_id']);
                 <?php include('source/icons/square-plus-solid.svg'); ?>
                 New Post</a></li>
         <li><a href="social.php?" class="<?php if ($_SESSION['page'] == 'social'): ?> _selected <?php endif; ?>
-                                         <?php if ($notifications['friendreq_notification'] > 0 || $notifications['chat_notification'] > 0): ?> notify <?php endif; ?> ">
+        <?php if (!empty($notifications)) : ?> <?php if ($notifications['friendreq_notification'] > 0 || $notifications['chat_notification'] > 0): ?> notify <?php endif; ?> <?php endif; ?>
+                                          ">
                 <?php include('source/icons/comments-solid.svg'); ?>
 
                 Social</a></li>

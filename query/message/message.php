@@ -61,11 +61,9 @@ class Message
                 $query = "SELECT DISTINCT sender_id, receiver_id FROM message";
                 $query .= " WHERE sender_id = " . $user_id;
                 $result = $db->query($query);
-                $result = array_reverse($result);
                 $query = "SELECT DISTINCT sender_id, receiver_id FROM message";
                 $query .= " WHERE receiver_id = " . $user_id;
                 $result2 = $db->query($query);
-                $result2 = array_reverse($result);
                 if ($result->num_rows > 0 || $result2->num_rows > 0) {
                     //$result = $result->fetch_assoc();
                     $mex = [];
@@ -83,6 +81,7 @@ class Message
                         }
                         $i++;
                     }
+                    $mex = array_reverse($mex);
                     return $mex;
                 } else {
                     return [];

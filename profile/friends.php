@@ -4,7 +4,9 @@ $friends = User::getFriendsByID($_SESSION['user_id']);
 <h1 hidden="hidden">Friends</h1>
 <?php if (!is_array($friends) || count($friends) == 0): ?>
     <section class="centered">
+    <h2 hidden = "hidden">center</h2>
         <article>
+        <h2 hidden = "hidden">icons</h2>
             <?php include('source/icons/circle-exclamation-solid.svg'); ?>
             <p>You really need to make some friends...</p>
             <a href="../social.php?section=requests">Friend requests</a>

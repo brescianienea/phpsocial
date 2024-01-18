@@ -7,7 +7,9 @@ $friedsIDs = User::getFriendsByID($_SESSION['user_id']);
 
 <?php if (!is_array($friedsIDs) || count($friedsIDs) == 0): ?>
     <section class="centered">
+    <h2 hidden = "hidden">center</h2>
         <article>
+        <h2 hidden = "hidden">icons</h2>
             <?php include('source/icons/circle-exclamation-solid.svg'); ?>
             <p>You really need to make some friends...</p>
             <a href="../social.php?section=requests">Friend requests</a>
@@ -15,6 +17,7 @@ $friedsIDs = User::getFriendsByID($_SESSION['user_id']);
     </section>
 <?php else: ?>
     <section class="filters">
+    <h2 hidden = "hidden">filters:</h2>
         <div class="select">
             <label for="game_tag">Game: </label>
             <select id="game_tag" name="game_tag" onchange="redirect();">
@@ -78,6 +81,7 @@ $friedsIDs = User::getFriendsByID($_SESSION['user_id']);
 
     </section>
     <section class="post-wrapper">
+    <h2 hidden = "hidden">wrapper</h2>
         <?php if (!isset($_GET['tenor_tag'])) {
             $_GET['tenor_tag'] = '';
         }
@@ -94,6 +98,7 @@ $friedsIDs = User::getFriendsByID($_SESSION['user_id']);
 
                         <section
                         >
+                        <h2 hidden = "hidden">icon</h2>
                             <div class="game-icon <?= $post['game_tag'] ?>">
                                 <?php include('source/icons/' . $post['game_tag'] . '.svg') ?>
                             </div>

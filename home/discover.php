@@ -76,6 +76,7 @@ if (!isset($_GET['game_tag'])) {
 
 </section>
 <section class="post-wrapper">
+    <h2 hidden = "hidden">wrapper</h2>
     <?php if (!isset($_GET['tenor_tag'])) {
         $_GET['tenor_tag'] = '';
     }
@@ -90,8 +91,8 @@ if (!isset($_GET['game_tag'])) {
             <?php foreach ($postList as $post): ?>
                 <li onclick="location.href = '../post.php?post_id=<?= $post['post_id'] ?>'">
 
-                    <section
-                    >
+                    <section>
+                    <h2 hidden = "hidden">icon</h2>
                         <div class="game-icon <?= $post['game_tag'] ?>">
                             <?php include('source/icons/' . $post['game_tag'] . '.svg') ?>
                         </div>

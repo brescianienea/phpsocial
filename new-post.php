@@ -1,33 +1,32 @@
 <?php
 ?>
-<!DOCTYPE html>
-<html lang='en'>
-<?php include('head.php'); ?>
-<?php $_SESSION['page'] = 'new-post' ?>
-<body>
-<?php include('header.php'); ?>
-</header>
-<main>
-    <div class='column'>
-        <div class='wrapper'>
-            <?php if ($_SESSION['logged'] == 'false'): ?>
-                <?php include('login-required.php'); ?>
-            <?php else: ?>
-                <h1>New Post</h1>
-                <form class="new-post">
-
-                    <fieldset class="tags">
-                        <legend hidden="hidden">tags:</legend>
-                        <div class="select">
-                            <label for="game_tag">Game: </label>
-                            <select id="game_tag" name="game_tag">
-                                <option value="" selected disabled>-- Game --</option>
-                                <option value="lol">League of Legends</option>
-                                <option value="tft">Teamfight Tactics</option>
-                                <option value="wildrift">Wild Rift</option>
-                                <option value="valorant">VALORANT</option>
-                                <option value="lor">Legends of Runeterra</option>
-                            </select>
+    <!DOCTYPE html>
+    <html lang='en'>
+    <?php include('head.php'); ?>
+    <?php $_SESSION['page'] = 'new-post' ?>
+    <body>
+    <?php include('header.php'); ?>
+    </header>
+    <main>
+        <div class='column'>
+            <div class='wrapper'>
+                <?php if ($_SESSION['logged'] == 'false'): ?>
+                    <?php include('login-required.php'); ?>
+                <?php else: ?>
+                    <h1>New Post</h1>
+                    <form class="new-post">
+                        <section class="tags">
+                            <h2 hidden = "hidden">Tags:</h2>
+                            <div class="select">
+                                <label for="game_tag">Game: </label>
+                                <select id="game_tag" name="game_tag">
+                                    <option value="" selected disabled>-- Game --</option>
+                                    <option value="lol">League of Legends</option>
+                                    <option value="tft">Teamfight Tactics</option>
+                                    <option value="wildrift">Wild Rift</option>
+                                    <option value="valorant">VALORANT</option>
+                                    <option value="lor">Legends of Runeterra</option>
+                                </select>
 
                         </div>
                         <div class="select">

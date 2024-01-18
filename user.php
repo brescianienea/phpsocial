@@ -27,22 +27,22 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
                         <ul class="icons">
                             <li>
                                 <a class="share-facebook"
-                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                data-url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
                                    href=""><?php include('source/icons/facebook.svg') ?></a>
                             </li>
                             <li>
                                 <a class="share-twitter"
-                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                data-url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
                                    href="#"><?php include('source/icons/x-twitter.svg') ?></i></a>
                             </li>
                             <li>
                                 <a class="share-whatsapp"
-                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                data-url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
                                    href="#"><?php include('source/icons/whatsapp.svg') ?></i></a>
                             </li>
                             <li>
                                 <a class="share-telegram"
-                                   url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
+                                data-url="https://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>"
                                    href="#"><?php include('source/icons/telegram.svg') ?></a>
                             </li>
                         </ul>
@@ -57,6 +57,7 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
                 </div>
 
                 <section class="profile-title">
+                <h2 hidden = "hidden">title</h2>
                     <img alt="Profile Image" src="source/images/profile/placeholder.webp">
                     <div>
                         <h1><?= User::getUsernameByID($_GET['user_id'])['username'] ?></h1>
@@ -89,6 +90,7 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
                     </div>
                 </section>
                 <section class="post-wrapper">
+                <h2 hidden = "hidden">wrapper</h2>
                     <?php $postList = Post::getPostsByID($_GET['user_id']); ?>
 
                     <?php if (is_array($postList)): ?>
@@ -96,8 +98,8 @@ if (isset($_SESSION['user_id']) && $_GET['user_id'] == $_SESSION['user_id']) {
                             <?php foreach ($postList as $post): ?>
                                 <li onclick="location.href = '../post.php?post_id=<?= $post['post_id'] ?>'">
 
-                                    <section
-                                    >
+                                    <section>
+                                    <h2 hidden = "hidden">game icons</h2>
                                         <div class="game-icon <?= $post['game_tag'] ?>">
                                             <?php include('source/icons/' . $post['game_tag'] . '.svg') ?>
                                         </div>

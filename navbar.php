@@ -10,7 +10,7 @@ if ($_SESSION['logged'] == 'true') {
 
 
 ?>
-<nav class="" role="navigation">
+<nav class="">
     <ul class="nav navbar-nav">
         <li><a href="home.php?" class="<?php if ($_SESSION['page'] == 'feed'): ?> _selected <?php endif; ?>">
                 <?php include('source/icons/newspaper-solid.svg'); ?>
